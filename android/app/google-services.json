@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "78837080015",
+    "project_id": "medexer-mobile",
+    "storage_bucket": "medexer-mobile.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:78837080015:android:57d177d541c197230b7cba",
+        "android_client_info": {
+          "package_name": "medexer.medexer_donor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "78837080015-aaes4211t3l1glglbpjviishca6jg186.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "medexer.medexer_donor",
+            "certificate_hash": "0897d83330c57fd26162b41b8419c3859d9bc249"
+          }
+        },
+        {
+          "client_id": "78837080015-hs1cfj2hvonlb2echejgvq8arltrbg56.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "medexer.medexer_donor",
+            "certificate_hash": "6ff76a3e6f1b6f064e2a272d1fba58a6dc5f1cf4"
+          }
+        },
+        {
+          "client_id": "78837080015-oevktfr3eshr7grrmp5q27tv6110spk9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDss4ySMllxzzfRB4BDDjHNynZKxHX5FXg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "78837080015-oevktfr3eshr7grrmp5q27tv6110spk9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "78837080015-gik1vi3b522639i1utf417iub6dugmiq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "medexer.medexerdonor.medexerMobile"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

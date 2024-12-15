@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>78837080015-o2hpvlbt1j912u3159ms31vv2mg79c39.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.78837080015-o2hpvlbt1j912u3159ms31vv2mg79c39</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>78837080015-aaes4211t3l1glglbpjviishca6jg186.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyC4JOtoNSaVJcy25KipEHKecw_NPCGdt2g</string>
+	<key>GCM_SENDER_ID</key>
+	<string>78837080015</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.medexer.medexer</string>
+	<key>PROJECT_ID</key>
+	<string>medexer-mobile</string>
+	<key>STORAGE_BUCKET</key>
+	<string>medexer-mobile.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:78837080015:ios:6b4dccea705c416f0b7cba</string>
+</dict>
+</plist>
