@@ -12,9 +12,14 @@ import 'package:account_sdk/src/auth/bearer_auth.dart';
 import 'package:account_sdk/src/auth/oauth.dart';
 import 'package:account_sdk/src/api/manage_contact_info_api.dart';
 import 'package:account_sdk/src/api/me_api.dart';
+import 'package:account_sdk/src/api/medical_history_api.dart';
+import 'package:account_sdk/src/api/notifications_api.dart';
+import 'package:account_sdk/src/api/support_api.dart';
+import 'package:account_sdk/src/api/upload_api.dart';
+import 'package:account_sdk/src/api/user_list_api.dart';
 
 class AccountSdk {
-  static const String basePath = r'https://www.staging-api.medexer.livestocx.xyz';
+  static const String basePath = r'https://www.api.medexer.livestocx.xyz';
 
   final Dio dio;
   final Serializers serializers;
@@ -77,5 +82,35 @@ class AccountSdk {
   /// by doing that all interceptors will not be executed
   MeApi getMeApi() {
     return MeApi(dio, serializers);
+  }
+
+  /// Get MedicalHistoryApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  MedicalHistoryApi getMedicalHistoryApi() {
+    return MedicalHistoryApi(dio, serializers);
+  }
+
+  /// Get NotificationsApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  NotificationsApi getNotificationsApi() {
+    return NotificationsApi(dio, serializers);
+  }
+
+  /// Get SupportApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  SupportApi getSupportApi() {
+    return SupportApi(dio, serializers);
+  }
+
+  /// Get UploadApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  UploadApi getUploadApi() {
+    return UploadApi(dio, serializers);
+  }
+
+  /// Get UserListApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  UserListApi getUserListApi() {
+    return UserListApi(dio, serializers);
   }
 }

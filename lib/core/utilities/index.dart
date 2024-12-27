@@ -1,4 +1,7 @@
+import 'package:medexer/core/constants/routes.dart';
+import 'package:medexer/core/models/drawer_item_model.dart';
 import 'package:medexer/core/models/onboarding_item_model.dart';
+import 'package:medexer/core/models/profile_menu_item_model.dart';
 
 List<OnboardingItemModel> onboardingItems = [
   OnboardingItemModel(
@@ -14,6 +17,102 @@ List<OnboardingItemModel> onboardingItems = [
     image: 'assets/images/onboarding_2.jpg',
   ),
 ];
+
+List<ProfileMenuItemModel> otherProfileMenuItems = [
+  ProfileMenuItemModel(
+    icon: 'assets/icons/icon_help.png',
+    title: 'Help',
+    route_to: AppRoutes.helpRoute,
+  ),
+  ProfileMenuItemModel(
+    icon: 'assets/icons/icon_legal.png',
+    title: 'Legal',
+    route_to: AppRoutes.legalRoute,
+  ),
+];
+
+List<ProfileMenuItemModel> profileMenuItems = [
+  ProfileMenuItemModel(
+    icon: 'assets/icons/icon_user_edit.png',
+    title: 'Profile details',
+    route_to: AppRoutes.accountDetailsRoute,
+  ),
+  // ProfileMenuItemModel(
+  //   icon: 'assets/icons/icon_wallet.png',
+  //   title: 'Wallet',
+  //   route_to: AppRoutes.walletRoute,
+  // ),
+  ProfileMenuItemModel(
+    icon: 'assets/icons/icon_favorite.png',
+    title: 'Favorite centers',
+    route_to: AppRoutes.favoriteCentersRoute,
+  ),
+];
+
+List<Map<String, dynamic>> profileAvatars = [
+  {
+    'type': 'AVATAR',
+    'image':
+        'https://medexer.s3.eu-north-1.amazonaws.com/avatars/default_avatar_1.jpg'
+  },
+  {
+    'type': 'AVATAR',
+    'image':
+        'https://medexer.s3.eu-north-1.amazonaws.com/avatars/default_avatar_2.jpg'
+  },
+  {
+    'type': 'FILE_UPLOAD',
+    'image': 'assets/images/image_file_upload_banner.png',
+  },
+];
+
+List<DrawerItem> drawerItems = [
+  DrawerItem(
+    icon: 'assets/icons/icon_science.png',
+    title: 'Donation centers',
+    routeTo: AppRoutes.donationCentersRoute,
+  ),
+  DrawerItem(
+    icon: 'assets/icons/icon_health_medical.png',
+    title: 'Medical history',
+    routeTo: AppRoutes.medicalHistoryRoute,
+  ),
+  DrawerItem(
+    icon: 'assets/icons/icon_help_2.png',
+    title: 'Contact us',
+    routeTo: AppRoutes.contactUsRoute,
+  ),
+  DrawerItem(
+    icon: 'assets/icons/icon_file.png',
+    title: 'About us',
+    routeTo: AppRoutes.aboutUsRoute,
+  ),
+];
+
+final List<String> complianceSteps = ['Personal details', 'Identification'];
+
+final List<String> bloodGroups = [
+  'A+',
+  'A-',
+  'B+',
+  'B-',
+  'O+',
+  'O-',
+  'AB+',
+  'AB-',
+];
+
+final List<String> genoTypes = ['AA', 'AS', 'SS'];
+
+final List<String> defaultBooleanOptions = ['Yes', 'No'];
+
+final List<String> identificationOptions = [
+  "National Identity Card",
+  "Voter's Card",
+  "Passport",
+];
+
+final List<String> appointmentTypes = ['Ongoing', 'Completed'];
 
 final List<Map<String, String>> platformCountries = [
   {'name': 'Afghanistan', 'dialCode': '+93', 'flagEmoji': '🇦🇫'},

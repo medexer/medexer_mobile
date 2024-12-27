@@ -3,6 +3,10 @@
 // @dart=3.5
 // @dart=3.5
 // @dart=3.5
+// @dart=3.5
+// @dart=3.5
+// @dart=3.5
+// @dart=3.5
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // @dart=3.5
 
@@ -118,12 +122,48 @@ final BuiltSet<UploadDonorComplianceDTOGenotypeEnum>
   _$uploadDonorComplianceDTOGenotypeEnum_SC,
 ]);
 
+const UploadDonorComplianceDTOIdentificationTypeEnum
+    _$uploadDonorComplianceDTOIdentificationTypeEnum_passport =
+    const UploadDonorComplianceDTOIdentificationTypeEnum._('passport');
+const UploadDonorComplianceDTOIdentificationTypeEnum
+    _$uploadDonorComplianceDTOIdentificationTypeEnum_voterCard =
+    const UploadDonorComplianceDTOIdentificationTypeEnum._('voterCard');
+const UploadDonorComplianceDTOIdentificationTypeEnum
+    _$uploadDonorComplianceDTOIdentificationTypeEnum_nationalIdentityCard =
+    const UploadDonorComplianceDTOIdentificationTypeEnum._(
+        'nationalIdentityCard');
+
+UploadDonorComplianceDTOIdentificationTypeEnum
+    _$uploadDonorComplianceDTOIdentificationTypeEnumValueOf(String name) {
+  switch (name) {
+    case 'passport':
+      return _$uploadDonorComplianceDTOIdentificationTypeEnum_passport;
+    case 'voterCard':
+      return _$uploadDonorComplianceDTOIdentificationTypeEnum_voterCard;
+    case 'nationalIdentityCard':
+      return _$uploadDonorComplianceDTOIdentificationTypeEnum_nationalIdentityCard;
+    default:
+      throw new ArgumentError(name);
+  }
+}
+
+final BuiltSet<UploadDonorComplianceDTOIdentificationTypeEnum>
+    _$uploadDonorComplianceDTOIdentificationTypeEnumValues = new BuiltSet<
+        UploadDonorComplianceDTOIdentificationTypeEnum>(const <UploadDonorComplianceDTOIdentificationTypeEnum>[
+  _$uploadDonorComplianceDTOIdentificationTypeEnum_passport,
+  _$uploadDonorComplianceDTOIdentificationTypeEnum_voterCard,
+  _$uploadDonorComplianceDTOIdentificationTypeEnum_nationalIdentityCard,
+]);
+
 Serializer<UploadDonorComplianceDTOBloodGroupEnum>
     _$uploadDonorComplianceDTOBloodGroupEnumSerializer =
     new _$UploadDonorComplianceDTOBloodGroupEnumSerializer();
 Serializer<UploadDonorComplianceDTOGenotypeEnum>
     _$uploadDonorComplianceDTOGenotypeEnumSerializer =
     new _$UploadDonorComplianceDTOGenotypeEnumSerializer();
+Serializer<UploadDonorComplianceDTOIdentificationTypeEnum>
+    _$uploadDonorComplianceDTOIdentificationTypeEnumSerializer =
+    new _$UploadDonorComplianceDTOIdentificationTypeEnumSerializer();
 
 class _$UploadDonorComplianceDTOBloodGroupEnumSerializer
     implements PrimitiveSerializer<UploadDonorComplianceDTOBloodGroupEnum> {
@@ -207,6 +247,41 @@ class _$UploadDonorComplianceDTOGenotypeEnumSerializer
           _fromWire[serialized] ?? (serialized is String ? serialized : ''));
 }
 
+class _$UploadDonorComplianceDTOIdentificationTypeEnumSerializer
+    implements
+        PrimitiveSerializer<UploadDonorComplianceDTOIdentificationTypeEnum> {
+  static const Map<String, Object> _toWire = const <String, Object>{
+    'passport': 'passport',
+    'voterCard': 'voter_card',
+    'nationalIdentityCard': 'national_identity_card',
+  };
+  static const Map<Object, String> _fromWire = const <Object, String>{
+    'passport': 'passport',
+    'voter_card': 'voterCard',
+    'national_identity_card': 'nationalIdentityCard',
+  };
+
+  @override
+  final Iterable<Type> types = const <Type>[
+    UploadDonorComplianceDTOIdentificationTypeEnum
+  ];
+  @override
+  final String wireName = 'UploadDonorComplianceDTOIdentificationTypeEnum';
+
+  @override
+  Object serialize(Serializers serializers,
+          UploadDonorComplianceDTOIdentificationTypeEnum object,
+          {FullType specifiedType = FullType.unspecified}) =>
+      _toWire[object.name] ?? object.name;
+
+  @override
+  UploadDonorComplianceDTOIdentificationTypeEnum deserialize(
+          Serializers serializers, Object serialized,
+          {FullType specifiedType = FullType.unspecified}) =>
+      UploadDonorComplianceDTOIdentificationTypeEnum.valueOf(
+          _fromWire[serialized] ?? (serialized is String ? serialized : ''));
+}
+
 class _$UploadDonorComplianceDTO extends UploadDonorComplianceDTO {
   @override
   final UploadDonorComplianceDTOBloodGroupEnum bloodGroup;
@@ -221,7 +296,7 @@ class _$UploadDonorComplianceDTO extends UploadDonorComplianceDTO {
   @override
   final bool hasPreviouslyDonatedBlood;
   @override
-  final String identificationType;
+  final UploadDonorComplianceDTOIdentificationTypeEnum identificationType;
 
   factory _$UploadDonorComplianceDTO(
           [void Function(UploadDonorComplianceDTOBuilder)? updates]) =>
@@ -336,9 +411,11 @@ class UploadDonorComplianceDTOBuilder
   set hasPreviouslyDonatedBlood(bool? hasPreviouslyDonatedBlood) =>
       _$this._hasPreviouslyDonatedBlood = hasPreviouslyDonatedBlood;
 
-  String? _identificationType;
-  String? get identificationType => _$this._identificationType;
-  set identificationType(String? identificationType) =>
+  UploadDonorComplianceDTOIdentificationTypeEnum? _identificationType;
+  UploadDonorComplianceDTOIdentificationTypeEnum? get identificationType =>
+      _$this._identificationType;
+  set identificationType(
+          UploadDonorComplianceDTOIdentificationTypeEnum? identificationType) =>
       _$this._identificationType = identificationType;
 
   UploadDonorComplianceDTOBuilder() {

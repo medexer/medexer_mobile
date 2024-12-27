@@ -6,6 +6,7 @@ import 'package:medexer/components/text/custom_text_widget.dart';
 class TitleText extends StatelessWidget {
   final String title;
   final double? size;
+  final int? maxLines;
   final Color? color;
   final String? fontFamily;
   final FontWeight? weight;
@@ -14,6 +15,7 @@ class TitleText extends StatelessWidget {
   const TitleText(
       {super.key,
       this.size = 16,
+      this.maxLines,
       this.letterSpacing = -1,
       this.fontFamily = 'Gotham',
       this.weight = FontWeight.w500,
@@ -28,6 +30,7 @@ class TitleText extends StatelessWidget {
       text: title,
       color: color,
       weight: weight,
+      maxLines: maxLines,
       alignment: alignment,
       fontFamily: fontFamily,
       letterSpacing: letterSpacing,

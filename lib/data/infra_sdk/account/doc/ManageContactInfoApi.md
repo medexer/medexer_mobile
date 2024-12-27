@@ -5,11 +5,12 @@
 import 'package:account_sdk/api.dart';
 ```
 
-All URIs are relative to *https://www.staging-api.medexer.livestocx.xyz*
+All URIs are relative to *https://www.api.medexer.livestocx.xyz*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**accountControllerUpdateAccountEmail**](ManageContactInfoApi.md#accountcontrollerupdateaccountemail) | **POST** /v1/account/me/update-email | 
+[**accountControllerUpdateAccountName**](ManageContactInfoApi.md#accountcontrollerupdateaccountname) | **PATCH** /v1/account/me/update-name | 
 [**accountControllerUpdateAccountPhone**](ManageContactInfoApi.md#accountcontrollerupdateaccountphone) | **PATCH** /v1/account/me/update-phone | 
 [**accountControllerVerifyNewAccountEmail**](ManageContactInfoApi.md#accountcontrollerverifynewaccountemail) | **PATCH** /v1/account/me/verify-new-email | 
 
@@ -54,8 +55,49 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **accountControllerUpdateAccountName**
+> AccountInfo accountControllerUpdateAccountName(updateAccountNameDTO)
+
+
+
+### Example
+```dart
+import 'package:account_sdk/api.dart';
+
+final api = AccountSdk().getManageContactInfoApi();
+final UpdateAccountNameDTO updateAccountNameDTO = ; // UpdateAccountNameDTO | 
+
+try {
+    final response = api.accountControllerUpdateAccountName(updateAccountNameDTO);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling ManageContactInfoApi->accountControllerUpdateAccountName: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateAccountNameDTO** | [**UpdateAccountNameDTO**](UpdateAccountNameDTO.md)|  | 
+
+### Return type
+
+[**AccountInfo**](AccountInfo.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **accountControllerUpdateAccountPhone**
-> accountControllerUpdateAccountPhone(updateAccountPhoneDTO)
+> AccountInfo accountControllerUpdateAccountPhone(updateAccountPhoneDTO)
 
 
 
@@ -67,7 +109,8 @@ final api = AccountSdk().getManageContactInfoApi();
 final UpdateAccountPhoneDTO updateAccountPhoneDTO = ; // UpdateAccountPhoneDTO | 
 
 try {
-    api.accountControllerUpdateAccountPhone(updateAccountPhoneDTO);
+    final response = api.accountControllerUpdateAccountPhone(updateAccountPhoneDTO);
+    print(response);
 } catch on DioException (e) {
     print('Exception when calling ManageContactInfoApi->accountControllerUpdateAccountPhone: $e\n');
 }
@@ -81,7 +124,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**AccountInfo**](AccountInfo.md)
 
 ### Authorization
 
@@ -90,12 +133,12 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **accountControllerVerifyNewAccountEmail**
-> accountControllerVerifyNewAccountEmail(verifyNewAccountEmailDTO)
+> AccountInfo accountControllerVerifyNewAccountEmail(verifyNewAccountEmailDTO)
 
 
 
@@ -107,7 +150,8 @@ final api = AccountSdk().getManageContactInfoApi();
 final VerifyNewAccountEmailDTO verifyNewAccountEmailDTO = ; // VerifyNewAccountEmailDTO | 
 
 try {
-    api.accountControllerVerifyNewAccountEmail(verifyNewAccountEmailDTO);
+    final response = api.accountControllerVerifyNewAccountEmail(verifyNewAccountEmailDTO);
+    print(response);
 } catch on DioException (e) {
     print('Exception when calling ManageContactInfoApi->accountControllerVerifyNewAccountEmail: $e\n');
 }
@@ -121,7 +165,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**AccountInfo**](AccountInfo.md)
 
 ### Authorization
 
@@ -130,7 +174,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

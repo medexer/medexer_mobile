@@ -23,13 +23,8 @@ class _CustomAuthBackButtonState extends State<CustomAuthBackButton> {
       onTap: () {
         switch (widget.navigateTo) {
           case AuthNavigationTypes.authSignIn:
-            commonRepository.signInMethod.value = 'PHONE';
-
             Get.toNamed(AppRoutes.loginRoute);
 
-            break;
-          case AuthNavigationTypes.authSignInPhone:
-            commonRepository.signInMethod.value = 'PHONE';
             break;
           case AuthNavigationTypes.authSignUp:
             Get.toNamed(AppRoutes.signUpRoute);

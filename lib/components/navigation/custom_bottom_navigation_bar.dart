@@ -1,7 +1,10 @@
 // ignore_for_file: deprecated_member_use
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:medexer/components/indicators/notification_indicator.dart';
+import 'package:medexer/components/text/small_text.dart';
 import 'package:medexer/core/constants/colors.dart';
+import 'package:medexer/core/providers/index.dart';
 import 'package:medexer/data/repositories/common_repository.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
@@ -29,9 +32,10 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
         labelTextStyle: WidgetStateProperty.resolveWith<TextStyle?>(
           (Set<MaterialState> states) {
             TextStyle textStyle = const TextStyle(
-              fontSize: 13,
-              fontWeight: FontWeight.normal,
-              color: AppColors.textTertiaryColor,
+              fontSize: 12,
+              fontFamily: 'Roboto',
+              fontWeight: FontWeight.w500,
+              color: AppColors.textTertiaryInverseColor,
             );
 
             if (states.contains(MaterialState.selected)) {
@@ -48,70 +52,111 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
       ),
       child: NavigationBar(
         height: 60,
-        elevation: 0,
+        // elevation: 0,
+
         onDestinationSelected: widget.onTap,
         indicatorColor: AppColors.whiteColor,
         animationDuration: const Duration(seconds: 0),
         selectedIndex: commonRepository.currentScreenIndex.value,
-        surfaceTintColor: AppColors.primaryBackgroundColor,
+        surfaceTintColor: AppColors.whiteColor,
         labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
         destinations: [
           NavigationDestination(
             icon: Image.asset(
               'assets/icons/icon_home.png',
-              width: 22,
-              height: 22,
-              color: AppColors.textTertiaryColor,
+              width: 18,
+              height: 18,
+              color: AppColors.textTertiaryInverseColor,
             ),
             selectedIcon: Image.asset(
               'assets/icons/icon_home.png',
-              width: 22,
-              height: 22,
+              width: 18,
+              height: 18,
               color: AppColors.primaryBackgroundColor,
             ),
             label: "Home",
           ),
           NavigationDestination(
-            icon: Image.asset(
-              'assets/icons/icon_search.png',
+            icon: SizedBox(
               width: 22,
               height: 22,
-              color: AppColors.textTertiaryColor,
+              child: Obx(
+                () => Stack(
+                  children: [
+                    Image.asset(
+                      'assets/icons/icon_appointment.png',
+                      width: 18,
+                      height: 18,
+                      color: AppColors.textTertiaryInverseColor,
+                    ),
+                    Positioned(
+                      top: 0,
+                      right: 0,
+                      child: Visibility(
+                        visible: ServiceRegistry.userRepository.notifications
+                            .where((element) => element.isRead == false)
+                            .isNotEmpty,
+                        child: NotificationIndicator(),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
-            selectedIcon: Image.asset(
-              'assets/icons/icon_search.png',
+            selectedIcon: SizedBox(
               width: 22,
               height: 22,
-              color: AppColors.primaryBackgroundColor,
+              child: Obx(
+                () => Stack(
+                  children: [
+                    Image.asset(
+                      'assets/icons/icon_appointment.png',
+                      width: 18,
+                      height: 18,
+                      color: AppColors.primaryBackgroundColor,
+                    ),
+                    Positioned(
+                      top: 0,
+                      right: 0,
+                      child: Visibility(
+                        visible: ServiceRegistry.userRepository.notifications
+                            .where((element) => element.isRead == false)
+                            .isNotEmpty,
+                        child: NotificationIndicator(),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
-            label: "Browse",
+            label: "Appointments",
           ),
           NavigationDestination(
             icon: Image.asset(
-              'assets/icons/icon_order.png',
-              width: 22,
-              height: 22,
-              color: AppColors.textTertiaryColor,
+              'assets/icons/icon_notification.png',
+              width: 18,
+              height: 18,
+              color: AppColors.textTertiaryInverseColor,
             ),
             selectedIcon: Image.asset(
-              'assets/icons/icon_order.png',
-              width: 22,
-              height: 22,
+              'assets/icons/icon_notification.png',
+              width: 18,
+              height: 18,
               color: AppColors.primaryBackgroundColor,
             ),
-            label: "Orders",
+            label: "Notifications",
           ),
           NavigationDestination(
             icon: Image.asset(
-              'assets/icons/icon_user.png',
-              width: 22,
-              height: 22,
-              color: AppColors.textTertiaryColor,
+              'assets/icons/icon_profile.png',
+              width: 18,
+              height: 18,
+              color: AppColors.textTertiaryInverseColor,
             ),
             selectedIcon: Image.asset(
-              'assets/icons/icon_user.png',
-              width: 22,
-              height: 22,
+              'assets/icons/icon_profile.png',
+              width: 18,
+              height: 18,
               color: AppColors.primaryBackgroundColor,
             ),
             label: "Profile",

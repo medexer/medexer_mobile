@@ -28,7 +28,6 @@ void main() async {
   SystemChrome.setPreferredOrientations(
     [
       DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
     ],
   );
 
@@ -56,6 +55,8 @@ class _MyAppState extends State<MyApp> {
     getPackageData();
 
     rootRepository.initialize();
+
+    // setupInitialRoute();
 
     super.initState();
   }

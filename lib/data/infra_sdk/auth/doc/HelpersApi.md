@@ -5,7 +5,7 @@
 import 'package:auth_sdk/api.dart';
 ```
 
-All URIs are relative to *https://www.staging-api.medexer.livestocx.xyz*
+All URIs are relative to *https://www.api.medexer.livestocx.xyz*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

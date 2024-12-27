@@ -61,7 +61,7 @@ try {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://www.staging-api.medexer.livestocx.xyz*
+All URIs are relative to *https://www.api.medexer.livestocx.xyz*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------

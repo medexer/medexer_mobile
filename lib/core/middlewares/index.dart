@@ -200,6 +200,21 @@ void launchExternalBrowserUrl(String linkUrl) async {
   }
 }
 
+String getFileMimeType(String? extension) {
+  switch (extension?.toLowerCase()) {
+    case 'jpg':
+    case 'jpeg':
+      return 'image/jpeg';
+    case 'png':
+      return 'image/png';
+    case 'pdf':
+      return 'application/pdf';
+    // Add more cases as needed
+    default:
+      return 'application/octet-stream';
+  }
+}
+
 Future<PlatformFile?> getImageFromDeviceStorage({
   String fileName = 'avatar',
 }) async {
@@ -241,6 +256,55 @@ Future<PlatformFile?> getImageFromDeviceStorage({
     return platformFile;
   } catch (e) {
     log("Error picking image: $e");
+    return null;
+  }
+}
+
+Future<PlatformFile?> getFileFromDeviceStorage() async {
+  try {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ['jpg', 'jpeg', 'pdf'],
+      allowMultiple: false,
+    );
+
+    if (result == null || result.files.isEmpty) return null;
+
+    PlatformFile file = result.files.first;
+
+    // If it's an image, compress it
+    if (file.extension?.toLowerCase() == 'jpg' ||
+        file.extension?.toLowerCase() == 'jpeg') {
+      log("[INITIAL-FILE-SIZE] :: ${file.size}");
+
+      final Directory appDocDir = await getApplicationDocumentsDirectory();
+      final String targetPath = '${appDocDir.path}/${file.name}';
+
+      final compressedFile = await FlutterImageCompress.compressAndGetFile(
+        file.path!,
+        targetPath,
+        quality: 15,
+      );
+
+      if (compressedFile == null) return null;
+
+      File newFile = File(compressedFile.path);
+
+      PlatformFile compressedPlatformFile = PlatformFile(
+        name: file.name,
+        path: newFile.path,
+        size: newFile.lengthSync(),
+      );
+
+      log("[COMPRESSED-FILE-SIZE] :: ${compressedPlatformFile.size}");
+
+      return compressedPlatformFile;
+    }
+
+    // If it's a PDF, return as is
+    return file;
+  } catch (e) {
+    log("Error picking document: $e");
     return null;
   }
 }
@@ -468,4 +532,23 @@ String getFittedText({
 
 String formatPhoneNumber(String dialCode, String phoneNumber) {
   return '$dialCode$phoneNumber';
+}
+
+Future<Uint8List> getBytesFromAsset(
+    {required String path, required int width}) async {
+  final ByteData data = await rootBundle.load(path);
+  final ui.Codec codec = await ui
+      .instantiateImageCodec(data.buffer.asUint8List(), targetWidth: width);
+  final ui.FrameInfo fi = await codec.getNextFrame();
+
+  // Use null-aware operators and provide a fallback
+  final ByteData? byteData =
+      await fi.image.toByteData(format: ui.ImageByteFormat.png);
+
+  if (byteData == null) {
+    // Return an empty Uint8List or handle the error as appropriate
+    return Uint8List(0);
+  }
+
+  return byteData.buffer.asUint8List();
 }

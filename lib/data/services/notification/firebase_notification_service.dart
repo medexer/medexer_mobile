@@ -7,6 +7,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:medexer/core/middlewares/index.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:medexer/components/snackbars/custom_snackbar.dart';
+import 'package:medexer/core/providers/index.dart';
+import 'package:medexer/data/infra_sdk/account/lib/account_sdk.dart';
 import 'package:medexer/data/services/account/account_service.dart';
 
 class FirebaseNotificationService {
@@ -45,26 +47,22 @@ class FirebaseNotificationService {
       if (settings.authorizationStatus == AuthorizationStatus.authorized) {
         fcmToken = await _fcm.getToken();
 
-        // UpdateFCMTokenDTO updateFCMTokenDTO = UpdateFCMTokenDTO(
-        //   (instance) => instance..fcmToken = fcmToken,
-        // );
+        UpdateFCMTokenDTO updateFCMTokenDTO = UpdateFCMTokenDTO(
+          (instance) => instance..fcmToken = fcmToken,
+        );
 
-        // await accountService.updateFcmTokenService(updateFCMTokenDTO);
+        ServiceRegistry.accountService
+            .updateAccountFcmTokenService(updateFCMTokenDTO);
       }
 
       _fcm.onTokenRefresh.listen((newToken) async {
-        // UpdateFCMTokenDTO updateFCMTokenDTO = UpdateFCMTokenDTO(
-        //   (instance) => instance..fcmToken = fcmToken,
-        // );
+        UpdateFCMTokenDTO updateFCMTokenDTO = UpdateFCMTokenDTO(
+          (instance) => instance..fcmToken = fcmToken,
+        );
 
-        // await accountService.updateFcmTokenService(updateFCMTokenDTO);
+        ServiceRegistry.accountService
+            .updateAccountFcmTokenService(updateFCMTokenDTO);
       });
-
-      // / 5. Get APNs token specifically for iOS
-      if (Platform.isIOS) {
-        String? apnsToken = await _fcm.getAPNSToken();
-        log('[APNs Token]: $apnsToken');
-      }
 
       FirebaseMessaging.onBackgroundMessage(
           _firebaseMessagingBackgroundHandler);
@@ -75,13 +73,12 @@ class FirebaseNotificationService {
           log('[NOTIFICATION-DATA] :: ${message.data}');
           log('[NOTIFICATION-DATA] :: ${message.notification!.body}');
 
+          Get.closeAllSnackbars();
 
-          // Get.closeAllSnackbars();
-
-          // customNotificationSnackbar(
-          //   message: message.notification!.body!,
-          //   title: capitalizeFirstLetter(message.notification!.title!),
-          // );
+          customNotificationSnackbar(
+            message: message.notification!.body!,
+            title: capitalizeFirstLetter(message.notification!.title!),
+          );
         }
       });
 

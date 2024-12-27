@@ -15,24 +15,54 @@ import 'package:built_value/iso_8601_date_time_serializer.dart';
 import 'package:account_sdk/src/date_serializer.dart';
 import 'package:account_sdk/src/model/date.dart';
 
-import 'package:account_sdk/src/model/account.dart';
+import 'package:account_sdk/src/model/account_info.dart';
+import 'package:account_sdk/src/model/add_list_item_dto.dart';
+import 'package:account_sdk/src/model/contact_us_dto.dart';
+import 'package:account_sdk/src/model/delete_account_dto.dart';
+import 'package:account_sdk/src/model/file_upload_result.dart';
+import 'package:account_sdk/src/model/list_item_info.dart';
+import 'package:account_sdk/src/model/medical_history_info.dart';
+import 'package:account_sdk/src/model/notification_info.dart';
 import 'package:account_sdk/src/model/update_account_email_dto.dart';
+import 'package:account_sdk/src/model/update_account_name_dto.dart';
 import 'package:account_sdk/src/model/update_account_password_dto.dart';
 import 'package:account_sdk/src/model/update_account_phone_dto.dart';
 import 'package:account_sdk/src/model/update_fcm_token_dto.dart';
+import 'package:account_sdk/src/model/update_profile_image_dto.dart';
 import 'package:account_sdk/src/model/verify_new_account_email_dto.dart';
 
 part 'serializers.g.dart';
 
 @SerializersFor([
-  Account,
+  AccountInfo,
+  AddListItemDTO,
+  ContactUsDTO,
+  DeleteAccountDTO,
+  FileUploadResult,
+  ListItemInfo,
+  MedicalHistoryInfo,
+  NotificationInfo,
   UpdateAccountEmailDTO,
+  UpdateAccountNameDTO,
   UpdateAccountPasswordDTO,
   UpdateAccountPhoneDTO,
   UpdateFCMTokenDTO,
+  UpdateProfileImageDTO,
   VerifyNewAccountEmailDTO,
 ])
 Serializers serializers = (_$serializers.toBuilder()
+      ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(ListItemInfo)]),
+        () => ListBuilder<ListItemInfo>(),
+      )
+      ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(NotificationInfo)]),
+        () => ListBuilder<NotificationInfo>(),
+      )
+      ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(MedicalHistoryInfo)]),
+        () => ListBuilder<MedicalHistoryInfo>(),
+      )
       ..add(const OneOfSerializer())
       ..add(const AnyOfSerializer())
       ..add(const DateSerializer())

@@ -50,7 +50,8 @@ abstract class UploadDonorComplianceDTO implements Built<UploadDonorComplianceDT
 
   /// Donor identification document type
   @BuiltValueField(wireName: r'identificationType')
-  String get identificationType;
+  UploadDonorComplianceDTOIdentificationTypeEnum get identificationType;
+  // enum identificationTypeEnum {  passport,  voter_card,  national_identity_card,  };
 
   UploadDonorComplianceDTO._();
 
@@ -108,7 +109,7 @@ class _$UploadDonorComplianceDTOSerializer implements PrimitiveSerializer<Upload
     yield r'identificationType';
     yield serializers.serialize(
       object.identificationType,
-      specifiedType: const FullType(String),
+      specifiedType: const FullType(UploadDonorComplianceDTOIdentificationTypeEnum),
     );
   }
 
@@ -178,8 +179,8 @@ class _$UploadDonorComplianceDTOSerializer implements PrimitiveSerializer<Upload
         case r'identificationType':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType(UploadDonorComplianceDTOIdentificationTypeEnum),
+          ) as UploadDonorComplianceDTOIdentificationTypeEnum;
           result.identificationType = valueDes;
           break;
         default:
@@ -270,5 +271,25 @@ class UploadDonorComplianceDTOGenotypeEnum extends EnumClass {
 
   static BuiltSet<UploadDonorComplianceDTOGenotypeEnum> get values => _$uploadDonorComplianceDTOGenotypeEnumValues;
   static UploadDonorComplianceDTOGenotypeEnum valueOf(String name) => _$uploadDonorComplianceDTOGenotypeEnumValueOf(name);
+}
+
+class UploadDonorComplianceDTOIdentificationTypeEnum extends EnumClass {
+
+  /// Donor identification document type
+  @BuiltValueEnumConst(wireName: r'passport')
+  static const UploadDonorComplianceDTOIdentificationTypeEnum passport = _$uploadDonorComplianceDTOIdentificationTypeEnum_passport;
+  /// Donor identification document type
+  @BuiltValueEnumConst(wireName: r'voter_card')
+  static const UploadDonorComplianceDTOIdentificationTypeEnum voterCard = _$uploadDonorComplianceDTOIdentificationTypeEnum_voterCard;
+  /// Donor identification document type
+  @BuiltValueEnumConst(wireName: r'national_identity_card')
+  static const UploadDonorComplianceDTOIdentificationTypeEnum nationalIdentityCard = _$uploadDonorComplianceDTOIdentificationTypeEnum_nationalIdentityCard;
+
+  static Serializer<UploadDonorComplianceDTOIdentificationTypeEnum> get serializer => _$uploadDonorComplianceDTOIdentificationTypeEnumSerializer;
+
+  const UploadDonorComplianceDTOIdentificationTypeEnum._(String name): super(name);
+
+  static BuiltSet<UploadDonorComplianceDTOIdentificationTypeEnum> get values => _$uploadDonorComplianceDTOIdentificationTypeEnumValues;
+  static UploadDonorComplianceDTOIdentificationTypeEnum valueOf(String name) => _$uploadDonorComplianceDTOIdentificationTypeEnumValueOf(name);
 }
 

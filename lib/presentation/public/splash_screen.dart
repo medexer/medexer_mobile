@@ -4,6 +4,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:medexer/core/constants/colors.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:medexer/core/constants/routes.dart';
+import 'package:medexer/core/constants/secrets.dart';
 import 'package:medexer/presentation/dashboard/dashboard.dart';
 import 'package:medexer/presentation/auth/login/login_screen.dart';
 import 'package:medexer/presentation/public/onboarding_screen.dart';
@@ -19,13 +21,18 @@ class _SplashScreenState extends State<SplashScreen> {
   void initializeTimeOut() async {
     await Future.delayed(const Duration(milliseconds: 2500));
 
-    Get.to(
-      transition: Transition.fade,
-      duration: const Duration(milliseconds: 800),
-      // () => const LoginScreen(),
-      // () => const DashboardScreen(),
-      () => const OnboardingScreen(),
-    );
+    final hasToken =
+        localStorage.read(LocalStorageSecrets.dexerAccessToken) != null;
+
+    if (hasToken) {
+      Get.toNamed(AppRoutes.dashboardRoute);
+    } else {
+      Get.to(
+        transition: Transition.fade,
+        duration: const Duration(milliseconds: 800),
+        () => const OnboardingScreen(),
+      );
+    }
   }
 
   @override

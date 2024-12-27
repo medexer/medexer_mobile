@@ -1,5 +1,6 @@
 // ignore_for_file: must_be_immutable, prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:medexer/core/constants/colors.dart';
 
 class CustomFormDescriptionField extends StatefulWidget {
@@ -122,6 +123,9 @@ class _CustomFormDescriptionFieldState
               fontSize: widget.fontSize ?? 16,
               color: widget.textColor ?? Colors.white,
             ),
+            inputFormatters: [
+              LengthLimitingTextInputFormatter(widget.maxLength),
+            ],
           ),
         );
       },

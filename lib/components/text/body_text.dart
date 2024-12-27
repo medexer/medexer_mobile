@@ -9,6 +9,7 @@ class BodyText extends CustomTextWidget {
     Color? color,
     double? lineHeight,
     FontWeight? weight,
+    int? maxLines,
     TextAlign? alignment,
     required String text,
     Color? decorationColor,
@@ -16,6 +17,7 @@ class BodyText extends CustomTextWidget {
   }) : super(
           size: 14,
           text: text,
+          maxLines: maxLines,
           lineHeight: lineHeight ?? 1,
           weight: weight ?? FontWeight.w400,
           textStyleName: AppTextSizes.bodyText1,

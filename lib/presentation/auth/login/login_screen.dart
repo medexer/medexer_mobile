@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:get_storage/get_storage.dart';
+import 'package:medexer/core/providers/index.dart';
 import 'package:medexer/core/constants/sizes.dart';
 import 'package:medexer/core/constants/colors.dart';
 import 'package:medexer/core/constants/routes.dart';
@@ -10,17 +10,14 @@ import 'package:medexer/components/text/body_text.dart';
 import 'package:medexer/components/text/title_text.dart';
 import 'package:medexer/components/form/form_text_field.dart';
 import 'package:medexer/components/buttons/custom_button.dart';
-import 'package:medexer/components/text/custom_text_widget.dart';
-import 'package:medexer/components/form/form_password_field.dart';
-import 'package:medexer/core/providers/index.dart';
 import 'package:medexer/data/infra_sdk/auth/lib/auth_sdk.dart';
-import 'package:medexer/data/repositories/common_repository.dart';
+import 'package:medexer/components/text/custom_text_widget.dart';
 import 'package:medexer/components/badges/dexer_icon_badge.dart';
+import 'package:medexer/components/form/form_password_field.dart';
 import 'package:medexer/components/snackbars/custom_snackbar.dart';
 import 'package:medexer/components/buttons/custom_icon_button.dart';
 import 'package:medexer/components/navigation/auth_redirect_link.dart';
 import 'package:medexer/components/buttons/custom_loading_button.dart';
-import 'package:medexer/data/services/auth/authentication_service.dart';
 import 'package:medexer/components/navigation/auth_bottom_navigation_banner.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -94,8 +91,9 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return PopScope(
-      onPopInvokedWithResult: (didPop, result) {
-        return;
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) async {
+        return Future.value();
       },
       child: Scaffold(
         backgroundColor: AppColors.whiteColor,

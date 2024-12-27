@@ -139,7 +139,7 @@ class _UserLocationPermissionScreenState
           ),
           color: AppColors.whiteColor,
           child: CustomButton(
-            text: 'Allow Location Access',
+            text: 'Continue',
             width: double.maxFinite,
             height: 56,
             onTapHandler: () {

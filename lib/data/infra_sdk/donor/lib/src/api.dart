@@ -10,10 +10,13 @@ import 'package:donor_sdk/src/auth/api_key_auth.dart';
 import 'package:donor_sdk/src/auth/basic_auth.dart';
 import 'package:donor_sdk/src/auth/bearer_auth.dart';
 import 'package:donor_sdk/src/auth/oauth.dart';
+import 'package:donor_sdk/src/api/appointment_api.dart';
 import 'package:donor_sdk/src/api/compliance_api.dart';
+import 'package:donor_sdk/src/api/donation_center_api.dart';
+import 'package:donor_sdk/src/api/feed_api.dart';
 
 class DonorSdk {
-  static const String basePath = r'https://www.staging-api.medexer.livestocx.xyz';
+  static const String basePath = r'https://www.api.medexer.livestocx.xyz';
 
   final Dio dio;
   final Serializers serializers;
@@ -66,9 +69,27 @@ class DonorSdk {
     }
   }
 
+  /// Get AppointmentApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  AppointmentApi getAppointmentApi() {
+    return AppointmentApi(dio, serializers);
+  }
+
   /// Get ComplianceApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   ComplianceApi getComplianceApi() {
     return ComplianceApi(dio, serializers);
+  }
+
+  /// Get DonationCenterApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  DonationCenterApi getDonationCenterApi() {
+    return DonationCenterApi(dio, serializers);
+  }
+
+  /// Get FeedApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  FeedApi getFeedApi() {
+    return FeedApi(dio, serializers);
   }
 }

@@ -54,55 +54,94 @@ class AuthenticationService extends GetxController {
     }
   }
 
-  void appleSignInHandler() async{
- try {
-    if (isSignInProcessing.isTrue) {
-      return;
+  Future<void> appleSignInHandler() async {
+    try {
+      if (isSignInProcessing.isTrue) {
+        return;
+      }
+
+      await FirebaseAuth.instance.signOut();
+
+      final appleCredential = await SignInWithApple.getAppleIDCredential(
+        scopes: [
+          AppleIDAuthorizationScopes.email,
+          AppleIDAuthorizationScopes.fullName
+        ],
+      );
+
+      final credential = OAuthProvider('apple.com').credential(
+          idToken: appleCredential.identityToken,
+          accessToken: appleCredential.authorizationCode);
+
+      final UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithCredential(credential);
+
+      log('[APPLE-LOGIN-USER-CREDENTIAL] :: ${userCredential.user!.email}');
+
+      // Always use the email from the current sign in attempt
+      // This ensures we get updated email if user changes Apple ID
+      OAuthSigninDTO payload = OAuthSigninDTO(
+        (instance) => instance..email = userCredential.user!.email!,
+      );
+
+      await oAuthSignInService(payload);
+    } catch (e) {
+      log('[APPLE-LOGIN-ERROR] :: ${e.toString()}');
+      customErrorMessageSnackbar(
+        title: 'Error',
+        message: 'Apple sign in failed. Please try again.',
+      );
     }
-
-    await FirebaseAuth.instance.signOut();
-
-    final appleCredential = await SignInWithApple.getAppleIDCredential(
-      scopes: [
-        AppleIDAuthorizationScopes.email,
-        AppleIDAuthorizationScopes.fullName
-      ],
-    );
-
-    final credential = OAuthProvider('apple.com').credential(
-        idToken: appleCredential.identityToken,
-        accessToken: appleCredential.authorizationCode);
-
-    final UserCredential userCredential =
-        await FirebaseAuth.instance.signInWithCredential(credential);
-
-    final String? userIdToken = await userCredential.user?.getIdToken();
-
-    log('[APPLE-LOGIN-AUTHENTICATION-USER-ACCESS-TOKEN] :: $userIdToken');
-
-    OAuthSigninDTO payload = OAuthSigninDTO(
-      (instance) => instance..email = userCredential.user!.email,
-    );
-
-    oAuthSignInService(
-      payload,
-    );
-  } catch (e) {
-    log('[APPLE-LOGIN-ERROR] :: ${e.toString()}');
   }
-  }
+
+  // void appleSignInHandler() async {
+  //   try {
+  //     if (isSignInProcessing.isTrue) {
+  //       return;
+  //     }
+
+  //     await FirebaseAuth.instance.signOut();
+
+  //     final appleCredential = await SignInWithApple.getAppleIDCredential(
+  //       scopes: [
+  //         AppleIDAuthorizationScopes.email,
+  //         AppleIDAuthorizationScopes.fullName
+  //       ],
+  //     );
+
+  //     final credential = OAuthProvider('apple.com').credential(
+  //         idToken: appleCredential.identityToken,
+  //         accessToken: appleCredential.authorizationCode);
+
+  //     final UserCredential userCredential =
+  //         await FirebaseAuth.instance.signInWithCredential(credential);
+
+  //     final String? userIdToken = await userCredential.user?.getIdToken();
+
+  //     log('[APPLE-LOGIN-AUTHENTICATION-USER-ACCESS-TOKEN] :: $userIdToken');
+
+  //     OAuthSigninDTO payload = OAuthSigninDTO(
+  //       (instance) => instance..email = userCredential.user!.email,
+  //     );
+
+  //     oAuthSignInService(
+  //       payload,
+  //     );
+  //   } catch (e) {
+  //     log('[APPLE-LOGIN-ERROR] :: ${e.toString()}');
+  //   }
+  // }
 
   // !SIGNIN
   /// Signin to user account
   ///
   /// [METHOD] - POST
   ///
-  /// [ROUTE] - /auth/signin
+  /// [ROUTE] - /auth/signin-oauth
   ///
   /// [BODY] {
   ///     email?: string,
   ///     password?: string,
-  ///     phone?: string,
   /// }
   Future<void> oAuthSignInService(
     OAuthSigninDTO formData, {
@@ -138,16 +177,16 @@ class AuthenticationService extends GetxController {
           message: 'Login Successful!',
         );
 
-        // ServiceRegistry.localStorage.write(
-        //   LocalStorageSecrets.dexerAccessToken,
-        //   data.token,
-        // );
+        ServiceRegistry.localStorage.write(
+          LocalStorageSecrets.dexerAccessToken,
+          data.token,
+        );
         ServiceRegistry.localStorage.write(
           LocalStorageSecrets.dexerAuthenticationMethod,
           "SECURE",
         );
 
-        // Get.toNamed(AppRoutes.dashboardRoute);
+        Get.toNamed(AppRoutes.dashboardRoute);
 
         log("[OAUTH-SIGNIN-SUCCESS]");
       }
@@ -178,12 +217,11 @@ class AuthenticationService extends GetxController {
   ///
   /// [METHOD] - POST
   ///
-  /// [ROUTE] - /auth/signin
+  /// [ROUTE] - /auth/signin-donor
   ///
   /// [BODY] {
   ///     email?: string,
   ///     password?: string,
-  ///     phone?: string,
   /// }
   Future<void> signInService(
     SigninDTO formData, {
@@ -219,16 +257,16 @@ class AuthenticationService extends GetxController {
           message: 'Login Successful!',
         );
 
-        // ServiceRegistry.localStorage.write(
-        //   LocalStorageSecrets.dexerAccessToken,
-        //   data.token,
-        // );
+        ServiceRegistry.localStorage.write(
+          LocalStorageSecrets.dexerAccessToken,
+          data.token,
+        );
         ServiceRegistry.localStorage.write(
           LocalStorageSecrets.dexerAuthenticationMethod,
           "SECURE",
         );
 
-        // Get.toNamed(AppRoutes.dashboardRoute);
+        Get.toNamed(AppRoutes.dashboardRoute);
 
         log("[SIGNIN-SUCCESS]");
       }
@@ -470,10 +508,10 @@ class AuthenticationService extends GetxController {
 
         isSignUpProcessing.value = false;
 
-        // ServiceRegistry.localStorage.write(
-        //   LocalStorageSecrets.dexerAccessToken,
-        //   data.token,
-        // );
+        ServiceRegistry.localStorage.write(
+          LocalStorageSecrets.dexerAccessToken,
+          data.token,
+        );
         ServiceRegistry.localStorage.write(
           LocalStorageSecrets.dexerAuthenticationMethod,
           "SECURE",
@@ -484,7 +522,7 @@ class AuthenticationService extends GetxController {
           message: 'Signup Successful!',
         );
 
-        // Get.toNamed(AppRoutes.dashboardRoute);
+        Get.toNamed(AppRoutes.dashboardRoute);
 
         log("[SIGNUP-VERIFICATION-SUCCESS]");
       }

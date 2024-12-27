@@ -5,6 +5,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:medexer/core/constants/routes.dart';
 import 'package:medexer/core/constants/secrets.dart';
+import 'package:medexer/data/infra_sdk/account/lib/account_sdk.dart';
 import 'package:medexer/data/repositories/user_repository.dart';
 import 'package:medexer/data/repositories/common_repository.dart';
 import 'package:medexer/components/snackbars/custom_snackbar.dart';
@@ -38,5 +39,31 @@ void userLogoutHandler({
 
   Get.toNamed(AppRoutes.loginRoute);
 
-  await Future.delayed(const Duration(seconds: 3));
+  await Future.delayed(const Duration(milliseconds: 300));
+
+  userRepository.accountInfo.value = AccountInfo(
+    (account) => account
+      ..id = '0'
+      ..firstName = 'test'
+      ..lastName = 'test'
+      ..phone = '1234567890'
+      ..email = 'test@test.com'
+      ..state = ''
+      ..stateArea = ''
+      ..latitude = '0.0'
+      ..longitude = '0.0'
+      ..profilePhoto = 'https://via.placeholder.com/150'
+      ..accountType = AccountInfoAccountTypeEnum.individual
+      ..status = AccountInfoStatusEnum.active
+      ..fcmToken = ''
+      ..referralCode = ''
+      ..referredBy = ''
+      ..lastLogin = DateTime(2024, 12, 16)
+      ..lastDonationDate = ''
+      ..inRecovery = false
+      ..bloodGroup = AccountInfoBloodGroupEnum.O_
+      ..genotype = AccountInfoGenotypeEnum.AA
+      ..hasTattoos = false
+      ..isComplianceUploaded = false,
+  );
 }

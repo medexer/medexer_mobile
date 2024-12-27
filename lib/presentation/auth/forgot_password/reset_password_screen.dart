@@ -13,7 +13,7 @@ import 'package:medexer/components/snackbars/custom_snackbar.dart';
 import 'package:medexer/components/buttons/custom_loading_button.dart';
 import 'package:medexer/components/buttons/custom_auth_back_button.dart';
 import 'package:medexer/components/buttons/show_hide_password_button.dart';
-import 'package:medexer/components/progress-indicators/password_strength_indicator.dart';
+import 'package:medexer/components/indicators/password_strength_indicator.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
   const ResetPasswordScreen({super.key});

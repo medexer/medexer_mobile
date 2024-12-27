@@ -15,7 +15,7 @@ import 'package:auth_sdk/src/api/helpers_api.dart';
 import 'package:auth_sdk/src/api/password_api.dart';
 
 class AuthSdk {
-  static const String basePath = r'https://www.staging-api.medexer.livestocx.xyz';
+  static const String basePath = r'https://www.api.medexer.livestocx.xyz';
 
   final Dio dio;
   final Serializers serializers;

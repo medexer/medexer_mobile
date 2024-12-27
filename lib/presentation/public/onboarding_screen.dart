@@ -82,6 +82,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
     return PopScope(
       canPop: false,
+      onPopInvokedWithResult: (didPop, result) async {
+        return Future.value();
+      },
       child: Scaffold(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         body: PageView.builder(
@@ -140,7 +143,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   alignment: Alignment.bottomLeft,
                   child: Container(
                     // color: Colors.red,
-                    height: screenHeight * 0.55,
+                    height: screenHeight * 0.58,
                     width: double.maxFinite,
                     padding: const EdgeInsets.only(
                       left: 15,

@@ -6,6 +6,7 @@ class CustomLoadingButton extends StatelessWidget {
   final double? width;
   final double height;
   final Color? fontColor;
+  final Color? borderColor;
   final double? borderRadius;
   final Color? backgroundColor;
 
@@ -13,6 +14,7 @@ class CustomLoadingButton extends StatelessWidget {
     super.key,
     this.width,
     this.fontColor,
+    this.borderColor,
     this.borderRadius,
     required this.height,
     this.backgroundColor,
@@ -26,6 +28,9 @@ class CustomLoadingButton extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(borderRadius ?? 16),
         color: backgroundColor ?? AppColors.buttonPrimaryColor,
+        border: Border.all(
+          color: borderColor ?? AppColors.buttonPrimaryColor,
+        ),
       ),
       child: Center(
         child: LoadingAnimationWidget.hexagonDots(

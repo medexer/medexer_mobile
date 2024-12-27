@@ -60,25 +60,45 @@ try {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://www.staging-api.medexer.livestocx.xyz*
+All URIs are relative to *https://www.api.medexer.livestocx.xyz*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 [*ManageContactInfoApi*](doc/ManageContactInfoApi.md) | [**accountControllerUpdateAccountEmail**](doc/ManageContactInfoApi.md#accountcontrollerupdateaccountemail) | **POST** /v1/account/me/update-email | 
+[*ManageContactInfoApi*](doc/ManageContactInfoApi.md) | [**accountControllerUpdateAccountName**](doc/ManageContactInfoApi.md#accountcontrollerupdateaccountname) | **PATCH** /v1/account/me/update-name | 
 [*ManageContactInfoApi*](doc/ManageContactInfoApi.md) | [**accountControllerUpdateAccountPhone**](doc/ManageContactInfoApi.md#accountcontrollerupdateaccountphone) | **PATCH** /v1/account/me/update-phone | 
 [*ManageContactInfoApi*](doc/ManageContactInfoApi.md) | [**accountControllerVerifyNewAccountEmail**](doc/ManageContactInfoApi.md#accountcontrollerverifynewaccountemail) | **PATCH** /v1/account/me/verify-new-email | 
+[*MeApi*](doc/MeApi.md) | [**accountControllerDeleteAccount**](doc/MeApi.md#accountcontrollerdeleteaccount) | **DELETE** /v1/account/me/delete | 
 [*MeApi*](doc/MeApi.md) | [**accountControllerGetDetailedAccountInfo**](doc/MeApi.md#accountcontrollergetdetailedaccountinfo) | **GET** /v1/account/me/detailed | 
 [*MeApi*](doc/MeApi.md) | [**accountControllerUpdateAccountPassword**](doc/MeApi.md#accountcontrollerupdateaccountpassword) | **PATCH** /v1/account/me/update-password | 
 [*MeApi*](doc/MeApi.md) | [**accountControllerUpdateFcmToken**](doc/MeApi.md#accountcontrollerupdatefcmtoken) | **PATCH** /v1/account/me/update-fcm-token | 
+[*MeApi*](doc/MeApi.md) | [**accountControllerUpdateProfileImage**](doc/MeApi.md#accountcontrollerupdateprofileimage) | **PATCH** /v1/account/me/update-profile-image | 
+[*MedicalHistoryApi*](doc/MedicalHistoryApi.md) | [**accountControllerGetMedicalHistory**](doc/MedicalHistoryApi.md#accountcontrollergetmedicalhistory) | **GET** /v1/account/me/medical-history | 
+[*NotificationsApi*](doc/NotificationsApi.md) | [**accountControllerGetNotifications**](doc/NotificationsApi.md#accountcontrollergetnotifications) | **GET** /v1/account/me/notifications | 
+[*SupportApi*](doc/SupportApi.md) | [**supportControllerContactUs**](doc/SupportApi.md#supportcontrollercontactus) | **POST** /v1/account/support/contact-us | 
+[*UploadApi*](doc/UploadApi.md) | [**imageUploadControllerUploadFile**](doc/UploadApi.md#imageuploadcontrolleruploadfile) | **POST** /v1/account/upload/file | Upload an file
+[*UploadApi*](doc/UploadApi.md) | [**imageUploadControllerUploadImage**](doc/UploadApi.md#imageuploadcontrolleruploadimage) | **POST** /v1/account/upload/image | Upload an image with optional resizing
+[*UserListApi*](doc/UserListApi.md) | [**listItemControllerAddItemToList**](doc/UserListApi.md#listitemcontrolleradditemtolist) | **POST** /v1/account/list-items | Add an item to a user&#39;s list
+[*UserListApi*](doc/UserListApi.md) | [**listItemControllerGetUserList**](doc/UserListApi.md#listitemcontrollergetuserlist) | **GET** /v1/account/list-items | Get all list items for the current user
+[*UserListApi*](doc/UserListApi.md) | [**listItemControllerRemoveItemFromList**](doc/UserListApi.md#listitemcontrollerremoveitemfromlist) | **DELETE** /v1/account/list-items/{itemId} | Remove an item from a user&#39;s list
 
 
 ## Documentation For Models
 
- - [Account](doc/Account.md)
+ - [AccountInfo](doc/AccountInfo.md)
+ - [AddListItemDTO](doc/AddListItemDTO.md)
+ - [ContactUsDTO](doc/ContactUsDTO.md)
+ - [DeleteAccountDTO](doc/DeleteAccountDTO.md)
+ - [FileUploadResult](doc/FileUploadResult.md)
+ - [ListItemInfo](doc/ListItemInfo.md)
+ - [MedicalHistoryInfo](doc/MedicalHistoryInfo.md)
+ - [NotificationInfo](doc/NotificationInfo.md)
  - [UpdateAccountEmailDTO](doc/UpdateAccountEmailDTO.md)
+ - [UpdateAccountNameDTO](doc/UpdateAccountNameDTO.md)
  - [UpdateAccountPasswordDTO](doc/UpdateAccountPasswordDTO.md)
  - [UpdateAccountPhoneDTO](doc/UpdateAccountPhoneDTO.md)
  - [UpdateFCMTokenDTO](doc/UpdateFCMTokenDTO.md)
+ - [UpdateProfileImageDTO](doc/UpdateProfileImageDTO.md)
  - [VerifyNewAccountEmailDTO](doc/VerifyNewAccountEmailDTO.md)
 
 

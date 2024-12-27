@@ -7,10 +7,11 @@ class SmallText extends CustomTextWidget {
   SmallText({
     super.key,
     Color? color,
+    double? size,
     FontWeight? weight,
     required String text,
   }) : super(
-          size: 12,
+          size: size ?? 12,
           text: text,
           weight: weight ?? FontWeight.w400,
           textStyleName: AppTextSizes.bodyText1,

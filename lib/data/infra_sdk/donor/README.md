@@ -47,28 +47,43 @@ Please follow the [installation procedure](#installation--usage) and then run th
 import 'package:donor_sdk/donor_sdk.dart';
 
 
-final api = DonorSdk().getComplianceApi();
-final UploadDonorComplianceDTO uploadDonorComplianceDTO = ; // UploadDonorComplianceDTO | 
+final api = DonorSdk().getAppointmentApi();
+final num donationCenter = 8.14; // num | Donation center ID
+final CreateAppointmentDTO createAppointmentDTO = ; // CreateAppointmentDTO | 
 
 try {
-    api.donorControllerUploadCompliance(uploadDonorComplianceDTO);
+    final response = await api.donorControllerCreateAppointment(donationCenter, createAppointmentDTO);
+    print(response);
 } catch on DioException (e) {
-    print("Exception when calling ComplianceApi->donorControllerUploadCompliance: $e\n");
+    print("Exception when calling AppointmentApi->donorControllerCreateAppointment: $e\n");
 }
 
 ```
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://www.staging-api.medexer.livestocx.xyz*
+All URIs are relative to *https://www.api.medexer.livestocx.xyz*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+[*AppointmentApi*](doc/AppointmentApi.md) | [**donorControllerCreateAppointment**](doc/AppointmentApi.md#donorcontrollercreateappointment) | **POST** /v1/donor/create-appointment | 
+[*AppointmentApi*](doc/AppointmentApi.md) | [**donorControllerGetCompletedAppointments**](doc/AppointmentApi.md#donorcontrollergetcompletedappointments) | **GET** /v1/donor/completed-appointments | 
+[*AppointmentApi*](doc/AppointmentApi.md) | [**donorControllerGetPendingAppointments**](doc/AppointmentApi.md#donorcontrollergetpendingappointments) | **GET** /v1/donor/pending-appointments | 
 [*ComplianceApi*](doc/ComplianceApi.md) | [**donorControllerUploadCompliance**](doc/ComplianceApi.md#donorcontrolleruploadcompliance) | **POST** /v1/donor/upload-compliance | 
+[*DonationCenterApi*](doc/DonationCenterApi.md) | [**donorControllerGetDonationCenterAppointmentAvailability**](doc/DonationCenterApi.md#donorcontrollergetdonationcenterappointmentavailability) | **GET** /v1/donor/donation-center/{id}/appointment-availability | 
+[*DonationCenterApi*](doc/DonationCenterApi.md) | [**donorControllerGetDonationCenterDaysOfWork**](doc/DonationCenterApi.md#donorcontrollergetdonationcenterdaysofwork) | **GET** /v1/donor/donation-center/{id}/days-of-work | 
+[*FeedApi*](doc/FeedApi.md) | [**donorControllerGetDonationCenter**](doc/FeedApi.md#donorcontrollergetdonationcenter) | **GET** /v1/donor/donation-center/{id} | 
+[*FeedApi*](doc/FeedApi.md) | [**donorControllerGetDonationCenters**](doc/FeedApi.md#donorcontrollergetdonationcenters) | **GET** /v1/donor/donation-centers | 
 
 
 ## Documentation For Models
 
+ - [AccountInfo](doc/AccountInfo.md)
+ - [AppointmentInfo](doc/AppointmentInfo.md)
+ - [CreateAppointmentDTO](doc/CreateAppointmentDTO.md)
+ - [DonationCenterAvailability](doc/DonationCenterAvailability.md)
+ - [DonationCenterInfo](doc/DonationCenterInfo.md)
+ - [DonationCentreDaysOfWork](doc/DonationCentreDaysOfWork.md)
  - [UploadDonorComplianceDTO](doc/UploadDonorComplianceDTO.md)
 
 
