@@ -186,7 +186,7 @@ class _ComplianceScreenState extends State<ComplianceScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: AppSizes.vertical_10),
+                  const SizedBox(height: AppSizes.vertical_20),
                   complianceStep == 'Personal details'
                       ? CompliancePersonalDetailsStep(
                           donatedBlood: donatedBlood,

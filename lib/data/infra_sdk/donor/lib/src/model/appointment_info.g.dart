@@ -1,10 +1,5 @@
 // @dart=3.5
 // @dart=3.5
-// @dart=3.5
-// @dart=3.5
-// @dart=3.5
-// @dart=3.5
-// @dart=3.5
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // @dart=3.5
 
@@ -16,6 +11,10 @@ part of 'appointment_info.dart';
 
 const AppointmentInfoStatusEnum _$appointmentInfoStatusEnum_pending =
     const AppointmentInfoStatusEnum._('pending');
+const AppointmentInfoStatusEnum _$appointmentInfoStatusEnum_accepted =
+    const AppointmentInfoStatusEnum._('accepted');
+const AppointmentInfoStatusEnum _$appointmentInfoStatusEnum_processing =
+    const AppointmentInfoStatusEnum._('processing');
 const AppointmentInfoStatusEnum _$appointmentInfoStatusEnum_completed =
     const AppointmentInfoStatusEnum._('completed');
 const AppointmentInfoStatusEnum _$appointmentInfoStatusEnum_cancelled =
@@ -33,6 +32,10 @@ AppointmentInfoStatusEnum _$appointmentInfoStatusEnumValueOf(String name) {
   switch (name) {
     case 'pending':
       return _$appointmentInfoStatusEnum_pending;
+    case 'accepted':
+      return _$appointmentInfoStatusEnum_accepted;
+    case 'processing':
+      return _$appointmentInfoStatusEnum_processing;
     case 'completed':
       return _$appointmentInfoStatusEnum_completed;
     case 'cancelled':
@@ -53,6 +56,8 @@ AppointmentInfoStatusEnum _$appointmentInfoStatusEnumValueOf(String name) {
 final BuiltSet<AppointmentInfoStatusEnum> _$appointmentInfoStatusEnumValues =
     new BuiltSet<AppointmentInfoStatusEnum>(const <AppointmentInfoStatusEnum>[
   _$appointmentInfoStatusEnum_pending,
+  _$appointmentInfoStatusEnum_accepted,
+  _$appointmentInfoStatusEnum_processing,
   _$appointmentInfoStatusEnum_completed,
   _$appointmentInfoStatusEnum_cancelled,
   _$appointmentInfoStatusEnum_missed,
@@ -68,6 +73,8 @@ class _$AppointmentInfoStatusEnumSerializer
     implements PrimitiveSerializer<AppointmentInfoStatusEnum> {
   static const Map<String, Object> _toWire = const <String, Object>{
     'pending': 'pending',
+    'accepted': 'accepted',
+    'processing': 'processing',
     'completed': 'completed',
     'cancelled': 'cancelled',
     'missed': 'missed',
@@ -77,6 +84,8 @@ class _$AppointmentInfoStatusEnumSerializer
   };
   static const Map<Object, String> _fromWire = const <Object, String>{
     'pending': 'pending',
+    'accepted': 'accepted',
+    'processing': 'processing',
     'completed': 'completed',
     'cancelled': 'cancelled',
     'missed': 'missed',

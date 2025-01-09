@@ -2,6 +2,7 @@
 README.md
 analysis_options.yaml
 doc/AccountInfo.md
+doc/AddDonationCenterRatingDTO.md
 doc/AppointmentApi.md
 doc/AppointmentInfo.md
 doc/ComplianceApi.md
@@ -26,6 +27,7 @@ lib/src/auth/bearer_auth.dart
 lib/src/auth/oauth.dart
 lib/src/date_serializer.dart
 lib/src/model/account_info.dart
+lib/src/model/add_donation_center_rating_dto.dart
 lib/src/model/appointment_info.dart
 lib/src/model/create_appointment_dto.dart
 lib/src/model/date.dart

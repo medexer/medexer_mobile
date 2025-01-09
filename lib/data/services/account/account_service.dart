@@ -45,6 +45,8 @@ class AccountService extends GetxController {
 
         MeApi meApi = ServiceRegistry.accountSdk.getMeApi();
 
+        log('AUTH TOKEN: ${ServiceRegistry.localStorage.read(LocalStorageSecrets.dexerAccessToken)}');
+
         Dio.Response response =
             await meApi.accountControllerGetDetailedAccountInfo(
           headers: {
@@ -52,10 +54,12 @@ class AccountService extends GetxController {
               LocalStorageSecrets.dexerAccessToken,
             ),
           },
-        ).timeout(const Duration(seconds: 30));
+        );
+
+        log('[FETCH-DETAILED-USER-ACCOUNT-INFO-RESPONSE] :: ${response}');
 
         if (response.statusCode == 200) {
-          // log('[FETCH-DETAILED-USER-ACCOUNT-INFO-RESPONSE] :: ${response.data}');
+          log('[FETCH-DETAILED-USER-ACCOUNT-INFO-RESPONSE] :: ${response.data}');
 
           AccountInfo accountInfo = response.data;
 
@@ -77,7 +81,7 @@ class AccountService extends GetxController {
         if (error is Dio.DioException) {
           Dio.DioException dioError = error;
 
-          log('[FETCH-DETAILED-USER-ACCOUNT-INFO-ERROR-RESPONSE] :: ${dioError.response}');
+          log('[FETCH-DETAILED-USER-ACCOUNT-INFO-DIO-ERROR-RESPONSE] :: ${dioError.response}');
         }
       } finally {
         isFetchAccountInfoProcessing.value = false;

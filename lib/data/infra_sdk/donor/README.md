@@ -48,14 +48,13 @@ import 'package:donor_sdk/donor_sdk.dart';
 
 
 final api = DonorSdk().getAppointmentApi();
-final num donationCenter = 8.14; // num | Donation center ID
-final CreateAppointmentDTO createAppointmentDTO = ; // CreateAppointmentDTO | 
+final num appointmentId = 8.14; // num | Appointment ID
+final AddDonationCenterRatingDTO addDonationCenterRatingDTO = ; // AddDonationCenterRatingDTO | 
 
 try {
-    final response = await api.donorControllerCreateAppointment(donationCenter, createAppointmentDTO);
-    print(response);
+    api.appointmentControllerAddDonationCenterRating(appointmentId, addDonationCenterRatingDTO);
 } catch on DioException (e) {
-    print("Exception when calling AppointmentApi->donorControllerCreateAppointment: $e\n");
+    print("Exception when calling AppointmentApi->appointmentControllerAddDonationCenterRating: $e\n");
 }
 
 ```
@@ -66,9 +65,10 @@ All URIs are relative to *https://www.api.medexer.livestocx.xyz*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-[*AppointmentApi*](doc/AppointmentApi.md) | [**donorControllerCreateAppointment**](doc/AppointmentApi.md#donorcontrollercreateappointment) | **POST** /v1/donor/create-appointment | 
-[*AppointmentApi*](doc/AppointmentApi.md) | [**donorControllerGetCompletedAppointments**](doc/AppointmentApi.md#donorcontrollergetcompletedappointments) | **GET** /v1/donor/completed-appointments | 
-[*AppointmentApi*](doc/AppointmentApi.md) | [**donorControllerGetPendingAppointments**](doc/AppointmentApi.md#donorcontrollergetpendingappointments) | **GET** /v1/donor/pending-appointments | 
+[*AppointmentApi*](doc/AppointmentApi.md) | [**appointmentControllerAddDonationCenterRating**](doc/AppointmentApi.md#appointmentcontrolleradddonationcenterrating) | **POST** /v1/donor/appointment/add-rating | 
+[*AppointmentApi*](doc/AppointmentApi.md) | [**appointmentControllerCreateAppointment**](doc/AppointmentApi.md#appointmentcontrollercreateappointment) | **POST** /v1/donor/appointment/create | 
+[*AppointmentApi*](doc/AppointmentApi.md) | [**appointmentControllerGetCompletedAppointments**](doc/AppointmentApi.md#appointmentcontrollergetcompletedappointments) | **GET** /v1/donor/appointment/completed-appointments | 
+[*AppointmentApi*](doc/AppointmentApi.md) | [**appointmentControllerGetPendingAppointments**](doc/AppointmentApi.md#appointmentcontrollergetpendingappointments) | **GET** /v1/donor/appointment/pending-appointments | 
 [*ComplianceApi*](doc/ComplianceApi.md) | [**donorControllerUploadCompliance**](doc/ComplianceApi.md#donorcontrolleruploadcompliance) | **POST** /v1/donor/upload-compliance | 
 [*DonationCenterApi*](doc/DonationCenterApi.md) | [**donorControllerGetDonationCenterAppointmentAvailability**](doc/DonationCenterApi.md#donorcontrollergetdonationcenterappointmentavailability) | **GET** /v1/donor/donation-center/{id}/appointment-availability | 
 [*DonationCenterApi*](doc/DonationCenterApi.md) | [**donorControllerGetDonationCenterDaysOfWork**](doc/DonationCenterApi.md#donorcontrollergetdonationcenterdaysofwork) | **GET** /v1/donor/donation-center/{id}/days-of-work | 
@@ -79,6 +79,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [AccountInfo](doc/AccountInfo.md)
+ - [AddDonationCenterRatingDTO](doc/AddDonationCenterRatingDTO.md)
  - [AppointmentInfo](doc/AppointmentInfo.md)
  - [CreateAppointmentDTO](doc/CreateAppointmentDTO.md)
  - [DonationCenterAvailability](doc/DonationCenterAvailability.md)

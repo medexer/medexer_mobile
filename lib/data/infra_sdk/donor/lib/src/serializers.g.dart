@@ -1,10 +1,5 @@
 // @dart=3.5
 // @dart=3.5
-// @dart=3.5
-// @dart=3.5
-// @dart=3.5
-// @dart=3.5
-// @dart=3.5
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // @dart=3.5
 
@@ -20,6 +15,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(AccountInfoBloodGroupEnum.serializer)
       ..add(AccountInfoGenotypeEnum.serializer)
       ..add(AccountInfoStatusEnum.serializer)
+      ..add(AddDonationCenterRatingDTO.serializer)
       ..add(AppointmentInfo.serializer)
       ..add(AppointmentInfoStatusEnum.serializer)
       ..add(CreateAppointmentDTO.serializer)

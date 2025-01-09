@@ -1,12 +1,5 @@
 // @dart=3.5
 // @dart=3.5
-// @dart=3.5
-// @dart=3.5
-// @dart=3.5
-// @dart=3.5
-// @dart=3.5
-// @dart=3.5
-// @dart=3.5
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // @dart=3.5
 
@@ -17,6 +10,8 @@ part of 'donation_centre_days_of_work.dart';
 // **************************************************************************
 
 class _$DonationCentreDaysOfWork extends DonationCentreDaysOfWork {
+  @override
+  final String? id;
   @override
   final String? day;
   @override
@@ -33,7 +28,7 @@ class _$DonationCentreDaysOfWork extends DonationCentreDaysOfWork {
       (new DonationCentreDaysOfWorkBuilder()..update(updates))._build();
 
   _$DonationCentreDaysOfWork._(
-      {this.day, this.open, this.close, this.alwaysOpen, this.closed})
+      {this.id, this.day, this.open, this.close, this.alwaysOpen, this.closed})
       : super._();
 
   @override
@@ -49,6 +44,7 @@ class _$DonationCentreDaysOfWork extends DonationCentreDaysOfWork {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is DonationCentreDaysOfWork &&
+        id == other.id &&
         day == other.day &&
         open == other.open &&
         close == other.close &&
@@ -59,6 +55,7 @@ class _$DonationCentreDaysOfWork extends DonationCentreDaysOfWork {
   @override
   int get hashCode {
     var _$hash = 0;
+    _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, day.hashCode);
     _$hash = $jc(_$hash, open.hashCode);
     _$hash = $jc(_$hash, close.hashCode);
@@ -71,6 +68,7 @@ class _$DonationCentreDaysOfWork extends DonationCentreDaysOfWork {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'DonationCentreDaysOfWork')
+          ..add('id', id)
           ..add('day', day)
           ..add('open', open)
           ..add('close', close)
@@ -84,6 +82,10 @@ class DonationCentreDaysOfWorkBuilder
     implements
         Builder<DonationCentreDaysOfWork, DonationCentreDaysOfWorkBuilder> {
   _$DonationCentreDaysOfWork? _$v;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
 
   String? _day;
   String? get day => _$this._day;
@@ -112,6 +114,7 @@ class DonationCentreDaysOfWorkBuilder
   DonationCentreDaysOfWorkBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _id = $v.id;
       _day = $v.day;
       _open = $v.open;
       _close = $v.close;
@@ -139,6 +142,7 @@ class DonationCentreDaysOfWorkBuilder
   _$DonationCentreDaysOfWork _build() {
     final _$result = _$v ??
         new _$DonationCentreDaysOfWork._(
+            id: id,
             day: day,
             open: open,
             close: close,

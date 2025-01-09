@@ -27,6 +27,11 @@ Name | Type | Description | Notes
 **isComplianceUploaded** | **bool** | In compliance uploaded e.g false | [optional] 
 **isComplianceApproved** | **bool** | In compliance approved e.g false | [optional] 
 **verificationDeclineReason** | **String** | Flag to check if donation center credentials requires verification | [optional] 
+**ratingOne** | **String** | Rating one e.g 4 | [optional] 
+**ratingTwo** | **String** | Rating two e.g 56 | [optional] 
+**ratingThree** | **String** | Rating three e.g 78 | [optional] 
+**ratingFour** | **String** | Rating four e.g 90 | [optional] 
+**ratingFive** | **String** | Rating five e.g 100 | [optional] 
 **averageRating** | **String** | Average rating e.g 4.5 | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

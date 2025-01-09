@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bloodGroup** | **String** | Blood group of the donor. | 
 **genotype** | **String** | Genotype of the donor. | 
-**lastDonatedBloodDate** | [**DateTime**](DateTime.md) | Last donated blood date | 
+**lastDonatedBloodDate** | [**DateTime**](DateTime.md) | Last donated blood date | [optional] 
 **identificationDocument** | **String** | Donor identification document url | 
 **hasTattoos** | **bool** | Has tattoos | 
 **hasPreviouslyDonatedBlood** | **bool** | Has previously donated blood e.g false | 

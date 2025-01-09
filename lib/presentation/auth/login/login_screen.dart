@@ -84,6 +84,8 @@ class _LoginScreenState extends State<LoginScreen> {
         ..email = emailController.text.trim()
         ..password = passwordController.text.trim());
 
+      FocusScope.of(context).unfocus();
+
       ServiceRegistry.authenticationService.signInService(formData);
     }
   }

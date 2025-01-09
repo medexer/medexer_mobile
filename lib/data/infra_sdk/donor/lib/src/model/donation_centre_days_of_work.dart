@@ -12,6 +12,7 @@ part 'donation_centre_days_of_work.g.dart';
 /// DonationCentreDaysOfWork
 ///
 /// Properties:
+/// * [id] 
 /// * [day] 
 /// * [open] 
 /// * [close] 
@@ -19,6 +20,9 @@ part 'donation_centre_days_of_work.g.dart';
 /// * [closed] 
 @BuiltValue()
 abstract class DonationCentreDaysOfWork implements Built<DonationCentreDaysOfWork, DonationCentreDaysOfWorkBuilder> {
+  @BuiltValueField(wireName: r'id')
+  String? get id;
+
   @BuiltValueField(wireName: r'day')
   String? get day;
 
@@ -57,6 +61,13 @@ class _$DonationCentreDaysOfWorkSerializer implements PrimitiveSerializer<Donati
     DonationCentreDaysOfWork object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
+    if (object.id != null) {
+      yield r'id';
+      yield serializers.serialize(
+        object.id,
+        specifiedType: const FullType(String),
+      );
+    }
     if (object.day != null) {
       yield r'day';
       yield serializers.serialize(
@@ -115,6 +126,13 @@ class _$DonationCentreDaysOfWorkSerializer implements PrimitiveSerializer<Donati
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
+        case r'id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.id = valueDes;
+          break;
         case r'day':
           final valueDes = serializers.deserialize(
             value,

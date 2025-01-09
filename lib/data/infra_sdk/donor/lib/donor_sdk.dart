@@ -17,6 +17,7 @@ export 'package:donor_sdk/src/api/donation_center_api.dart';
 export 'package:donor_sdk/src/api/feed_api.dart';
 
 export 'package:donor_sdk/src/model/account_info.dart';
+export 'package:donor_sdk/src/model/add_donation_center_rating_dto.dart';
 export 'package:donor_sdk/src/model/appointment_info.dart';
 export 'package:donor_sdk/src/model/create_appointment_dto.dart';
 export 'package:donor_sdk/src/model/donation_center_availability.dart';

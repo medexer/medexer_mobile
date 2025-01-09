@@ -16,6 +16,7 @@ import 'package:donor_sdk/src/date_serializer.dart';
 import 'package:donor_sdk/src/model/date.dart';
 
 import 'package:donor_sdk/src/model/account_info.dart';
+import 'package:donor_sdk/src/model/add_donation_center_rating_dto.dart';
 import 'package:donor_sdk/src/model/appointment_info.dart';
 import 'package:donor_sdk/src/model/create_appointment_dto.dart';
 import 'package:donor_sdk/src/model/donation_center_availability.dart';
@@ -27,6 +28,7 @@ part 'serializers.g.dart';
 
 @SerializersFor([
   AccountInfo,
+  AddDonationCenterRatingDTO,
   AppointmentInfo,
   CreateAppointmentDTO,
   DonationCenterAvailability,

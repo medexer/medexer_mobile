@@ -76,6 +76,8 @@ class DonorService extends GetxController {
         log('[UPLOAD-COMPLIANCE-ERROR-RESPONSE] :: ${dioError.response}');
 
         if (dioError.response?.data['message'] != null) {
+          log('[UPLOAD-COMPLIANCE-ERROR-RESPONSE] :: ${dioError.response?.data['message']}');
+
           customErrorMessageSnackbar(
             title: 'Message',
             message: dioError.response!.data['message'],
@@ -223,7 +225,7 @@ class DonorService extends GetxController {
           ServiceRegistry.donorSdk.getAppointmentApi();
 
       Dio.Response response =
-          await appointmentApi.donorControllerCreateAppointment(
+          await appointmentApi.appointmentControllerCreateAppointment(
         createAppointmentDTO: formData,
         donationCenter: int.parse(donationCenterId),
         headers: {
@@ -295,14 +297,14 @@ class DonorService extends GetxController {
           ServiceRegistry.donorSdk.getAppointmentApi();
 
       final responses = await Future.wait([
-        appointmentApi.donorControllerGetPendingAppointments(
+        appointmentApi.appointmentControllerGetPendingAppointments(
           headers: {
             'Authorization': ServiceRegistry.localStorage.read(
               LocalStorageSecrets.dexerAccessToken,
             ),
           },
         ).timeout(const Duration(seconds: 10)),
-        appointmentApi.donorControllerGetCompletedAppointments(
+        appointmentApi.appointmentControllerGetCompletedAppointments(
           headers: {
             'Authorization': ServiceRegistry.localStorage.read(
               LocalStorageSecrets.dexerAccessToken,

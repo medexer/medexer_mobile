@@ -34,7 +34,7 @@ abstract class UploadDonorComplianceDTO implements Built<UploadDonorComplianceDT
 
   /// Last donated blood date
   @BuiltValueField(wireName: r'lastDonatedBloodDate')
-  DateTime get lastDonatedBloodDate;
+  DateTime? get lastDonatedBloodDate;
 
   /// Donor identification document url
   @BuiltValueField(wireName: r'identificationDocument')
@@ -86,11 +86,13 @@ class _$UploadDonorComplianceDTOSerializer implements PrimitiveSerializer<Upload
       object.genotype,
       specifiedType: const FullType(UploadDonorComplianceDTOGenotypeEnum),
     );
-    yield r'lastDonatedBloodDate';
-    yield serializers.serialize(
-      object.lastDonatedBloodDate,
-      specifiedType: const FullType(DateTime),
-    );
+    if (object.lastDonatedBloodDate != null) {
+      yield r'lastDonatedBloodDate';
+      yield serializers.serialize(
+        object.lastDonatedBloodDate,
+        specifiedType: const FullType(DateTime),
+      );
+    }
     yield r'identificationDocument';
     yield serializers.serialize(
       object.identificationDocument,

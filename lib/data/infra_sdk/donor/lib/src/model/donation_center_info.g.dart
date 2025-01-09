@@ -1,11 +1,5 @@
 // @dart=3.5
 // @dart=3.5
-// @dart=3.5
-// @dart=3.5
-// @dart=3.5
-// @dart=3.5
-// @dart=3.5
-// @dart=3.5
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // @dart=3.5
 
@@ -55,6 +49,16 @@ class _$DonationCenterInfo extends DonationCenterInfo {
   @override
   final String? verificationDeclineReason;
   @override
+  final String? ratingOne;
+  @override
+  final String? ratingTwo;
+  @override
+  final String? ratingThree;
+  @override
+  final String? ratingFour;
+  @override
+  final String? ratingFive;
+  @override
   final String? averageRating;
 
   factory _$DonationCenterInfo(
@@ -81,6 +85,11 @@ class _$DonationCenterInfo extends DonationCenterInfo {
       this.isComplianceUploaded,
       this.isComplianceApproved,
       this.verificationDeclineReason,
+      this.ratingOne,
+      this.ratingTwo,
+      this.ratingThree,
+      this.ratingFour,
+      this.ratingFive,
       this.averageRating})
       : super._();
 
@@ -116,6 +125,11 @@ class _$DonationCenterInfo extends DonationCenterInfo {
         isComplianceUploaded == other.isComplianceUploaded &&
         isComplianceApproved == other.isComplianceApproved &&
         verificationDeclineReason == other.verificationDeclineReason &&
+        ratingOne == other.ratingOne &&
+        ratingTwo == other.ratingTwo &&
+        ratingThree == other.ratingThree &&
+        ratingFour == other.ratingFour &&
+        ratingFive == other.ratingFive &&
         averageRating == other.averageRating;
   }
 
@@ -141,6 +155,11 @@ class _$DonationCenterInfo extends DonationCenterInfo {
     _$hash = $jc(_$hash, isComplianceUploaded.hashCode);
     _$hash = $jc(_$hash, isComplianceApproved.hashCode);
     _$hash = $jc(_$hash, verificationDeclineReason.hashCode);
+    _$hash = $jc(_$hash, ratingOne.hashCode);
+    _$hash = $jc(_$hash, ratingTwo.hashCode);
+    _$hash = $jc(_$hash, ratingThree.hashCode);
+    _$hash = $jc(_$hash, ratingFour.hashCode);
+    _$hash = $jc(_$hash, ratingFive.hashCode);
     _$hash = $jc(_$hash, averageRating.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -168,6 +187,11 @@ class _$DonationCenterInfo extends DonationCenterInfo {
           ..add('isComplianceUploaded', isComplianceUploaded)
           ..add('isComplianceApproved', isComplianceApproved)
           ..add('verificationDeclineReason', verificationDeclineReason)
+          ..add('ratingOne', ratingOne)
+          ..add('ratingTwo', ratingTwo)
+          ..add('ratingThree', ratingThree)
+          ..add('ratingFour', ratingFour)
+          ..add('ratingFive', ratingFive)
           ..add('averageRating', averageRating))
         .toString();
   }
@@ -260,6 +284,26 @@ class DonationCenterInfoBuilder
   set verificationDeclineReason(String? verificationDeclineReason) =>
       _$this._verificationDeclineReason = verificationDeclineReason;
 
+  String? _ratingOne;
+  String? get ratingOne => _$this._ratingOne;
+  set ratingOne(String? ratingOne) => _$this._ratingOne = ratingOne;
+
+  String? _ratingTwo;
+  String? get ratingTwo => _$this._ratingTwo;
+  set ratingTwo(String? ratingTwo) => _$this._ratingTwo = ratingTwo;
+
+  String? _ratingThree;
+  String? get ratingThree => _$this._ratingThree;
+  set ratingThree(String? ratingThree) => _$this._ratingThree = ratingThree;
+
+  String? _ratingFour;
+  String? get ratingFour => _$this._ratingFour;
+  set ratingFour(String? ratingFour) => _$this._ratingFour = ratingFour;
+
+  String? _ratingFive;
+  String? get ratingFive => _$this._ratingFive;
+  set ratingFive(String? ratingFive) => _$this._ratingFive = ratingFive;
+
   String? _averageRating;
   String? get averageRating => _$this._averageRating;
   set averageRating(String? averageRating) =>
@@ -291,6 +335,11 @@ class DonationCenterInfoBuilder
       _isComplianceUploaded = $v.isComplianceUploaded;
       _isComplianceApproved = $v.isComplianceApproved;
       _verificationDeclineReason = $v.verificationDeclineReason;
+      _ratingOne = $v.ratingOne;
+      _ratingTwo = $v.ratingTwo;
+      _ratingThree = $v.ratingThree;
+      _ratingFour = $v.ratingFour;
+      _ratingFive = $v.ratingFive;
       _averageRating = $v.averageRating;
       _$v = null;
     }
@@ -333,6 +382,11 @@ class DonationCenterInfoBuilder
             isComplianceUploaded: isComplianceUploaded,
             isComplianceApproved: isComplianceApproved,
             verificationDeclineReason: verificationDeclineReason,
+            ratingOne: ratingOne,
+            ratingTwo: ratingTwo,
+            ratingThree: ratingThree,
+            ratingFour: ratingFour,
+            ratingFive: ratingFive,
             averageRating: averageRating);
     replace(_$result);
     return _$result;

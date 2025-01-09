@@ -1,12 +1,5 @@
 // @dart=3.5
 // @dart=3.5
-// @dart=3.5
-// @dart=3.5
-// @dart=3.5
-// @dart=3.5
-// @dart=3.5
-// @dart=3.5
-// @dart=3.5
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // @dart=3.5
 
@@ -288,7 +281,7 @@ class _$UploadDonorComplianceDTO extends UploadDonorComplianceDTO {
   @override
   final UploadDonorComplianceDTOGenotypeEnum genotype;
   @override
-  final DateTime lastDonatedBloodDate;
+  final DateTime? lastDonatedBloodDate;
   @override
   final String identificationDocument;
   @override
@@ -305,7 +298,7 @@ class _$UploadDonorComplianceDTO extends UploadDonorComplianceDTO {
   _$UploadDonorComplianceDTO._(
       {required this.bloodGroup,
       required this.genotype,
-      required this.lastDonatedBloodDate,
+      this.lastDonatedBloodDate,
       required this.identificationDocument,
       required this.hasTattoos,
       required this.hasPreviouslyDonatedBlood,
@@ -315,8 +308,6 @@ class _$UploadDonorComplianceDTO extends UploadDonorComplianceDTO {
         bloodGroup, r'UploadDonorComplianceDTO', 'bloodGroup');
     BuiltValueNullFieldError.checkNotNull(
         genotype, r'UploadDonorComplianceDTO', 'genotype');
-    BuiltValueNullFieldError.checkNotNull(lastDonatedBloodDate,
-        r'UploadDonorComplianceDTO', 'lastDonatedBloodDate');
     BuiltValueNullFieldError.checkNotNull(identificationDocument,
         r'UploadDonorComplianceDTO', 'identificationDocument');
     BuiltValueNullFieldError.checkNotNull(
@@ -458,10 +449,11 @@ class UploadDonorComplianceDTOBuilder
                 bloodGroup, r'UploadDonorComplianceDTO', 'bloodGroup'),
             genotype: BuiltValueNullFieldError.checkNotNull(
                 genotype, r'UploadDonorComplianceDTO', 'genotype'),
-            lastDonatedBloodDate: BuiltValueNullFieldError.checkNotNull(
-                lastDonatedBloodDate, r'UploadDonorComplianceDTO', 'lastDonatedBloodDate'),
+            lastDonatedBloodDate: lastDonatedBloodDate,
             identificationDocument: BuiltValueNullFieldError.checkNotNull(
-                identificationDocument, r'UploadDonorComplianceDTO', 'identificationDocument'),
+                identificationDocument,
+                r'UploadDonorComplianceDTO',
+                'identificationDocument'),
             hasTattoos: BuiltValueNullFieldError.checkNotNull(
                 hasTattoos, r'UploadDonorComplianceDTO', 'hasTattoos'),
             hasPreviouslyDonatedBlood: BuiltValueNullFieldError.checkNotNull(
@@ -469,7 +461,9 @@ class UploadDonorComplianceDTOBuilder
                 r'UploadDonorComplianceDTO',
                 'hasPreviouslyDonatedBlood'),
             identificationType: BuiltValueNullFieldError.checkNotNull(
-                identificationType, r'UploadDonorComplianceDTO', 'identificationType'));
+                identificationType,
+                r'UploadDonorComplianceDTO',
+                'identificationType'));
     replace(_$result);
     return _$result;
   }

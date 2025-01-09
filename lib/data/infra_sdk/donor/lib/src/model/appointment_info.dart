@@ -44,7 +44,7 @@ abstract class AppointmentInfo implements Built<AppointmentInfo, AppointmentInfo
 
   @BuiltValueField(wireName: r'status')
   AppointmentInfoStatusEnum get status;
-  // enum statusEnum {  pending,  completed,  cancelled,  missed,  no_show,  rejected,  expired,  };
+  // enum statusEnum {  pending,  accepted,  processing,  completed,  cancelled,  missed,  no_show,  rejected,  expired,  };
 
   @BuiltValueField(wireName: r'verificationCode')
   String get verificationCode;
@@ -335,6 +335,10 @@ class AppointmentInfoStatusEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'pending')
   static const AppointmentInfoStatusEnum pending = _$appointmentInfoStatusEnum_pending;
+  @BuiltValueEnumConst(wireName: r'accepted')
+  static const AppointmentInfoStatusEnum accepted = _$appointmentInfoStatusEnum_accepted;
+  @BuiltValueEnumConst(wireName: r'processing')
+  static const AppointmentInfoStatusEnum processing = _$appointmentInfoStatusEnum_processing;
   @BuiltValueEnumConst(wireName: r'completed')
   static const AppointmentInfoStatusEnum completed = _$appointmentInfoStatusEnum_completed;
   @BuiltValueEnumConst(wireName: r'cancelled')

@@ -31,6 +31,11 @@ part 'donation_center_info.g.dart';
 /// * [isComplianceUploaded] - In compliance uploaded e.g false
 /// * [isComplianceApproved] - In compliance approved e.g false
 /// * [verificationDeclineReason] - Flag to check if donation center credentials requires verification
+/// * [ratingOne] - Rating one e.g 4
+/// * [ratingTwo] - Rating two e.g 56
+/// * [ratingThree] - Rating three e.g 78
+/// * [ratingFour] - Rating four e.g 90
+/// * [ratingFive] - Rating five e.g 100
 /// * [averageRating] - Average rating e.g 4.5
 @BuiltValue()
 abstract class DonationCenterInfo implements Built<DonationCenterInfo, DonationCenterInfoBuilder> {
@@ -109,6 +114,26 @@ abstract class DonationCenterInfo implements Built<DonationCenterInfo, DonationC
   /// Flag to check if donation center credentials requires verification
   @BuiltValueField(wireName: r'verificationDeclineReason')
   String? get verificationDeclineReason;
+
+  /// Rating one e.g 4
+  @BuiltValueField(wireName: r'ratingOne')
+  String? get ratingOne;
+
+  /// Rating two e.g 56
+  @BuiltValueField(wireName: r'ratingTwo')
+  String? get ratingTwo;
+
+  /// Rating three e.g 78
+  @BuiltValueField(wireName: r'ratingThree')
+  String? get ratingThree;
+
+  /// Rating four e.g 90
+  @BuiltValueField(wireName: r'ratingFour')
+  String? get ratingFour;
+
+  /// Rating five e.g 100
+  @BuiltValueField(wireName: r'ratingFive')
+  String? get ratingFive;
 
   /// Average rating e.g 4.5
   @BuiltValueField(wireName: r'averageRating')
@@ -267,6 +292,41 @@ class _$DonationCenterInfoSerializer implements PrimitiveSerializer<DonationCent
       yield r'verificationDeclineReason';
       yield serializers.serialize(
         object.verificationDeclineReason,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.ratingOne != null) {
+      yield r'ratingOne';
+      yield serializers.serialize(
+        object.ratingOne,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.ratingTwo != null) {
+      yield r'ratingTwo';
+      yield serializers.serialize(
+        object.ratingTwo,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.ratingThree != null) {
+      yield r'ratingThree';
+      yield serializers.serialize(
+        object.ratingThree,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.ratingFour != null) {
+      yield r'ratingFour';
+      yield serializers.serialize(
+        object.ratingFour,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.ratingFive != null) {
+      yield r'ratingFive';
+      yield serializers.serialize(
+        object.ratingFive,
         specifiedType: const FullType(String),
       );
     }
@@ -432,6 +492,41 @@ class _$DonationCenterInfoSerializer implements PrimitiveSerializer<DonationCent
             specifiedType: const FullType(String),
           ) as String;
           result.verificationDeclineReason = valueDes;
+          break;
+        case r'ratingOne':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.ratingOne = valueDes;
+          break;
+        case r'ratingTwo':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.ratingTwo = valueDes;
+          break;
+        case r'ratingThree':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.ratingThree = valueDes;
+          break;
+        case r'ratingFour':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.ratingFour = valueDes;
+          break;
+        case r'ratingFive':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.ratingFive = valueDes;
           break;
         case r'averageRating':
           final valueDes = serializers.deserialize(
