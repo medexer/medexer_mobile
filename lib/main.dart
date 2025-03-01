@@ -81,9 +81,9 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> _checkForUpdate() async {
-    if (Platform.isAndroid) {
-      InAppUpdateManager manager = InAppUpdateManager();
+    InAppUpdateManager manager = InAppUpdateManager();
 
+    if (Platform.isAndroid) {
       AppUpdateInfo? appUpdateInfo = await manager.checkForUpdate();
 
       if (appUpdateInfo == null) return;
@@ -117,10 +117,20 @@ class _MyAppState extends State<MyApp> {
         }
       }
     } else if (Platform.isIOS) {
-      VersionInfo? versionInfo = await UpgradeVersion.getiOSStoreVersion(
+      final currentVersion = _packageInfo.version;
+
+      final VersionInfo versionInfo = await UpgradeVersion.getiOSStoreVersion(
         packageInfo: _packageInfo,
-        // regionCode: "US",
       );
+
+      final storeVersion = versionInfo.storeVersion;
+
+      if (storeVersion != currentVersion) {
+        await manager.startAnUpdate(
+          type: AppUpdateType.flexible,
+        );
+      }
+
       debugPrint(versionInfo.toJson().toString());
     }
   }

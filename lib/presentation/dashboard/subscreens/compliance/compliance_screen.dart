@@ -131,7 +131,7 @@ class _ComplianceScreenState extends State<ComplianceScreen> {
       child: Scaffold(
         backgroundColor: AppColors.whiteColor,
         appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(140),
+          preferredSize: const Size.fromHeight(180),
           child: SafeArea(
             // padding: MediaQuery.of(context).padding,
             child: Container(
@@ -176,30 +176,28 @@ class _ComplianceScreenState extends State<ComplianceScreen> {
             ),
           ),
         ),
-        body: SafeArea(
-          child: SingleChildScrollView(
-            child: Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: AppSizes.horizontal_15,
-              ),
-              width: double.maxFinite,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: AppSizes.vertical_20),
-                  complianceStep == 'Personal details'
-                      ? CompliancePersonalDetailsStep(
-                          donatedBlood: donatedBlood,
-                          onChangeHandler: onFormChangeHandler,
-                        )
-                      : ComplianceIdentificationStep(
-                          onChangeHandler: onFormChangeHandler,
-                          identificationFile: identificationFile,
-                          identificationType: identificationType,
-                          identificationFileUrl: identificationFileUrl,
-                        ),
-                ],
-              ),
+        body: SingleChildScrollView(
+          child: Container(
+            padding: const EdgeInsets.symmetric(
+              horizontal: AppSizes.horizontal_15,
+            ),
+            width: double.maxFinite,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: AppSizes.vertical_20),
+                complianceStep == 'Personal details'
+                    ? CompliancePersonalDetailsStep(
+                        donatedBlood: donatedBlood,
+                        onChangeHandler: onFormChangeHandler,
+                      )
+                    : ComplianceIdentificationStep(
+                        onChangeHandler: onFormChangeHandler,
+                        identificationFile: identificationFile,
+                        identificationType: identificationType,
+                        identificationFileUrl: identificationFileUrl,
+                      ),
+              ],
             ),
           ),
         ),
