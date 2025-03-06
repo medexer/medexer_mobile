@@ -30,6 +30,7 @@ class AuthenticationService extends GetxController {
       }
 
       await FirebaseAuth.instance.signOut();
+      await ServiceRegistry.googleSignIn.signOut();
 
       final GoogleSignInAccount? googleSignInAccount =
           await ServiceRegistry.googleSignIn.signIn();
@@ -153,10 +154,22 @@ class AuthenticationService extends GetxController {
         log('[OAUTH-SIGNIN-ERROR-RESPONSE] :: ${dioError.response}');
 
         if (dioError.response?.data['message'] != null) {
-          customErrorMessageSnackbar(
-            title: 'Message',
-            message: dioError.response?.data['message'],
-          );
+          if (dioError.response?.data['message']
+              .contains('Requested user does not exist')) {
+            customErrorMessageSnackbar(
+              title: 'Message',
+              message: dioError.response?.data['message'],
+            );
+
+            Get.toNamed(AppRoutes.signUpRoute, parameters: {
+              "email": formData.email,
+            });
+          } else {
+            customErrorMessageSnackbar(
+              title: 'Message',
+              message: dioError.response?.data['message'],
+            );
+          }
         }
       }
     } finally {

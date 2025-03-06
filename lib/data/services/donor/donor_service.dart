@@ -16,6 +16,7 @@ class DonorService extends GetxController {
   RxBool isFetchAppointmentsProcessing = false.obs;
   RxBool isCreateAppointmentProcessing = false.obs;
   RxBool isFetchDonationCentersProcessing = false.obs;
+  RxBool isFetchDonationCenterProfileProcessing = false.obs;
 
   // !DONOR COMPLIANCE
   /// Compliance verification
@@ -149,10 +150,16 @@ class DonorService extends GetxController {
   /// [ROUTE] - /v1/donor/donation-center/:id/days-of-work
   ///
   /// [IS-AUTHENTICATED] - true
-  Future<void> fetchDonationCenterProfileService(
-      String donationCenterId) async {
+  Future<void> fetchDonationCenterProfileService({
+    bool enableLoader = false,
+    required String donationCenterId,
+  }) async {
     try {
       log("[FETCH-DONATION-CENTER-PROFILE-PENDING]");
+
+      if (enableLoader == true) {
+        isFetchDonationCenterProfileProcessing.value = true;
+      }
 
       DonationCenterApi donationCenterApi =
           ServiceRegistry.donorSdk.getDonationCenterApi();
@@ -193,9 +200,12 @@ class DonorService extends GetxController {
         ServiceRegistry.userRepository.donationCenterAppointmentAvailability
             .value = donationCenterAppointmentAvailability;
 
+        isFetchDonationCenterProfileProcessing.value = false;
         log("[FETCH-DONATION-CENTER-PROFILE-SUCCESS]");
       }
     } catch (error) {
+      isFetchDonationCenterProfileProcessing.value = false;
+
       log('[FETCH-DONATION-CENTER-PROFILE-ERROR-RESPONSE] :: $error');
 
       if (error is Dio.DioException) {
@@ -203,6 +213,8 @@ class DonorService extends GetxController {
 
         log('[FETCH-DONATION-CENTER-PROFILE-ERROR-RESPONSE] :: ${dioError.response}');
       }
+    } finally {
+      isFetchDonationCenterProfileProcessing.value = false;
     }
   }
 

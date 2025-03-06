@@ -2,6 +2,8 @@ import 'dart:io';
 import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:medexer/components/buttons/custom_loading_button.dart';
+import 'package:medexer/components/snackbars/custom_snackbar.dart';
 import 'package:medexer/core/models/donation_center_info_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:medexer/core/constants/sizes.dart';
@@ -28,7 +30,8 @@ class _DonationCenterProfileScreenState
     extends State<DonationCenterProfileScreen> {
   void initializeDonationCenterProfile() {
     ServiceRegistry.donorService.fetchDonationCenterProfileService(
-      ServiceRegistry.userRepository.donationCenterInfo.value.id!,
+      donationCenterId:
+          ServiceRegistry.userRepository.donationCenterInfo.value.id!,
     );
   }
 
@@ -240,22 +243,32 @@ class _DonationCenterProfileScreenState
           right: AppSizes.horizontal_15,
         ),
         color: AppColors.whiteColor,
-        child: CustomButton(
-          text: 'Book appointment',
-          width: double.maxFinite,
-          height: 56,
-          onTapHandler: () {
-            ServiceRegistry.donorService.fetchDonationCenterProfileService(
-              ServiceRegistry.userRepository.donationCenterInfo.value.id!,
-            );
+        child: Obx(
+          () {
+            return ServiceRegistry
+                    .donorService.isFetchDonationCenterProfileProcessing.isTrue
+                ? CustomLoadingButton(height: 56)
+                : CustomButton(
+                    text: 'Book appointment',
+                    width: double.maxFinite,
+                    height: 56,
+                    onTapHandler: () async {
+                      await ServiceRegistry.donorService
+                          .fetchDonationCenterProfileService(
+                        donationCenterId: ServiceRegistry
+                            .userRepository.donationCenterInfo.value.id!,
+                        enableLoader: true,
+                      );
 
-            Get.toNamed(AppRoutes.bookAppointmentRoute);
+                      Get.toNamed(AppRoutes.bookAppointmentRoute);
+                    },
+                    fontSize: 16,
+                    borderRadius: 16,
+                    fontColor: AppColors.whiteColor,
+                    fontWeight: FontWeight.w500,
+                    backgroundColor: AppColors.primaryBackgroundColor,
+                  );
           },
-          fontSize: 16,
-          borderRadius: 16,
-          fontColor: AppColors.whiteColor,
-          fontWeight: FontWeight.w500,
-          backgroundColor: AppColors.primaryBackgroundColor,
         ),
       ),
     );

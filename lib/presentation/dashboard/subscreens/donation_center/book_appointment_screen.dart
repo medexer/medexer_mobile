@@ -38,6 +38,7 @@ class _BookAppointmentScreenState extends State<BookAppointmentScreen> {
         (instance) => instance
           ..date = ServiceRegistry.userRepository
               .donationCenterAppointmentAvailability[selectedDayIndex].date
+              .toString()
           ..time = ServiceRegistry
               .userRepository
               .donationCenterAppointmentAvailability[selectedDayIndex]
@@ -110,8 +111,8 @@ class _BookAppointmentScreenState extends State<BookAppointmentScreen> {
                             .userRepository.donationCenterInfo.value.name!,
                       ),
                       SubtitleText(
-                        text: ServiceRegistry.userRepository
-                            .donationCenterInfo.value.address!,
+                        text: ServiceRegistry
+                            .userRepository.donationCenterInfo.value.address!,
                       ),
                       const SizedBox(height: AppSizes.vertical_10),
                       SubtitleText(

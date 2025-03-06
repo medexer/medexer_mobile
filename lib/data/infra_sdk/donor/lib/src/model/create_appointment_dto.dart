@@ -23,7 +23,7 @@ abstract class CreateAppointmentDTO implements Built<CreateAppointmentDTO, Creat
 
   /// Appointment date e.g 2024-01-01.
   @BuiltValueField(wireName: r'date')
-  DateTime get date;
+  String get date;
 
   /// Appointment donation center id e.g 14.
   @BuiltValueField(wireName: r'donationCenter')
@@ -60,7 +60,7 @@ class _$CreateAppointmentDTOSerializer implements PrimitiveSerializer<CreateAppo
     yield r'date';
     yield serializers.serialize(
       object.date,
-      specifiedType: const FullType(DateTime),
+      specifiedType: const FullType(String),
     );
     yield r'donationCenter';
     yield serializers.serialize(
@@ -100,8 +100,8 @@ class _$CreateAppointmentDTOSerializer implements PrimitiveSerializer<CreateAppo
         case r'date':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
+            specifiedType: const FullType(String),
+          ) as String;
           result.date = valueDes;
           break;
         case r'donationCenter':

@@ -1,5 +1,3 @@
-// @dart=3.5
-// @dart=3.5
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // @dart=3.5
 
@@ -13,7 +11,7 @@ class _$CreateAppointmentDTO extends CreateAppointmentDTO {
   @override
   final String time;
   @override
-  final DateTime date;
+  final String date;
   @override
   final num donationCenter;
 
@@ -78,9 +76,9 @@ class CreateAppointmentDTOBuilder
   String? get time => _$this._time;
   set time(String? time) => _$this._time = time;
 
-  DateTime? _date;
-  DateTime? get date => _$this._date;
-  set date(DateTime? date) => _$this._date = date;
+  String? _date;
+  String? get date => _$this._date;
+  set date(String? date) => _$this._date = date;
 
   num? _donationCenter;
   num? get donationCenter => _$this._donationCenter;
