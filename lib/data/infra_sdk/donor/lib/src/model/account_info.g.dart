@@ -356,8 +356,6 @@ class _$AccountInfo extends AccountInfo {
   @override
   final String referredBy;
   @override
-  final DateTime lastLogin;
-  @override
   final String lastDonationDate;
   @override
   final bool inRecovery;
@@ -389,7 +387,6 @@ class _$AccountInfo extends AccountInfo {
       required this.fcmToken,
       required this.referralCode,
       required this.referredBy,
-      required this.lastLogin,
       required this.lastDonationDate,
       required this.inRecovery,
       required this.bloodGroup,
@@ -419,8 +416,6 @@ class _$AccountInfo extends AccountInfo {
         referralCode, r'AccountInfo', 'referralCode');
     BuiltValueNullFieldError.checkNotNull(
         referredBy, r'AccountInfo', 'referredBy');
-    BuiltValueNullFieldError.checkNotNull(
-        lastLogin, r'AccountInfo', 'lastLogin');
     BuiltValueNullFieldError.checkNotNull(
         lastDonationDate, r'AccountInfo', 'lastDonationDate');
     BuiltValueNullFieldError.checkNotNull(
@@ -460,7 +455,6 @@ class _$AccountInfo extends AccountInfo {
         fcmToken == other.fcmToken &&
         referralCode == other.referralCode &&
         referredBy == other.referredBy &&
-        lastLogin == other.lastLogin &&
         lastDonationDate == other.lastDonationDate &&
         inRecovery == other.inRecovery &&
         bloodGroup == other.bloodGroup &&
@@ -487,7 +481,6 @@ class _$AccountInfo extends AccountInfo {
     _$hash = $jc(_$hash, fcmToken.hashCode);
     _$hash = $jc(_$hash, referralCode.hashCode);
     _$hash = $jc(_$hash, referredBy.hashCode);
-    _$hash = $jc(_$hash, lastLogin.hashCode);
     _$hash = $jc(_$hash, lastDonationDate.hashCode);
     _$hash = $jc(_$hash, inRecovery.hashCode);
     _$hash = $jc(_$hash, bloodGroup.hashCode);
@@ -516,7 +509,6 @@ class _$AccountInfo extends AccountInfo {
           ..add('fcmToken', fcmToken)
           ..add('referralCode', referralCode)
           ..add('referredBy', referredBy)
-          ..add('lastLogin', lastLogin)
           ..add('lastDonationDate', lastDonationDate)
           ..add('inRecovery', inRecovery)
           ..add('bloodGroup', bloodGroup)
@@ -591,10 +583,6 @@ class AccountInfoBuilder implements Builder<AccountInfo, AccountInfoBuilder> {
   String? get referredBy => _$this._referredBy;
   set referredBy(String? referredBy) => _$this._referredBy = referredBy;
 
-  DateTime? _lastLogin;
-  DateTime? get lastLogin => _$this._lastLogin;
-  set lastLogin(DateTime? lastLogin) => _$this._lastLogin = lastLogin;
-
   String? _lastDonationDate;
   String? get lastDonationDate => _$this._lastDonationDate;
   set lastDonationDate(String? lastDonationDate) =>
@@ -645,7 +633,6 @@ class AccountInfoBuilder implements Builder<AccountInfo, AccountInfoBuilder> {
       _fcmToken = $v.fcmToken;
       _referralCode = $v.referralCode;
       _referredBy = $v.referredBy;
-      _lastLogin = $v.lastLogin;
       _lastDonationDate = $v.lastDonationDate;
       _inRecovery = $v.inRecovery;
       _bloodGroup = $v.bloodGroup;
@@ -700,7 +687,6 @@ class AccountInfoBuilder implements Builder<AccountInfo, AccountInfoBuilder> {
             fcmToken: BuiltValueNullFieldError.checkNotNull(fcmToken, r'AccountInfo', 'fcmToken'),
             referralCode: BuiltValueNullFieldError.checkNotNull(referralCode, r'AccountInfo', 'referralCode'),
             referredBy: BuiltValueNullFieldError.checkNotNull(referredBy, r'AccountInfo', 'referredBy'),
-            lastLogin: BuiltValueNullFieldError.checkNotNull(lastLogin, r'AccountInfo', 'lastLogin'),
             lastDonationDate: BuiltValueNullFieldError.checkNotNull(lastDonationDate, r'AccountInfo', 'lastDonationDate'),
             inRecovery: BuiltValueNullFieldError.checkNotNull(inRecovery, r'AccountInfo', 'inRecovery'),
             bloodGroup: BuiltValueNullFieldError.checkNotNull(bloodGroup, r'AccountInfo', 'bloodGroup'),

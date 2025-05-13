@@ -3,9 +3,10 @@ import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:dio/dio.dart' as Dio;
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:medexer/core/providers/index.dart';
+import 'package:medexer/core/providers/index.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:medexer/core/constants/routes.dart';
-import 'package:medexer/core/providers/index.dart';
 import 'package:medexer/core/constants/secrets.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:medexer/data/infra_sdk/auth/lib/auth_sdk.dart';
@@ -18,10 +19,6 @@ class AuthenticationService extends GetxController {
   RxBool isForgotPasswordProcessing = false.obs;
   RxBool isResendSignUpOTPSuccessful = false.obs;
   RxBool isResetPasswordOtpVerificationProcessing = false.obs;
-
-  final AuthSdk authSdk = AuthSdk(
-      // basePathOverride: dotenv.env['INFRA_BASE_URL']!,
-      );
 
   Future<void> googleSignInHandler() async {
     try {
@@ -66,7 +63,6 @@ class AuthenticationService extends GetxController {
       AppleAuthProvider provider = AppleAuthProvider();
 
       provider.addScope('email');
-      provider.addScope('name');
 
       UserCredential credential =
           await FirebaseAuth.instance.signInWithProvider(provider);
@@ -109,7 +105,7 @@ class AuthenticationService extends GetxController {
 
       isSignInProcessing.value = true;
 
-      AuthApi authApi = authSdk.getAuthApi();
+      AuthApi authApi = ServiceRegistry.authSdk.getAuthApi();
 
       Dio.Response response = await authApi
           .authControllerSigninOAuth(
@@ -156,14 +152,14 @@ class AuthenticationService extends GetxController {
         if (dioError.response?.data['message'] != null) {
           if (dioError.response?.data['message']
               .contains('Requested user does not exist')) {
+            Get.toNamed(AppRoutes.signUpRoute, parameters: {
+              "email": formData.email,
+            });
+            
             customErrorMessageSnackbar(
               title: 'Message',
               message: dioError.response?.data['message'],
             );
-
-            Get.toNamed(AppRoutes.signUpRoute, parameters: {
-              "email": formData.email,
-            });
           } else {
             customErrorMessageSnackbar(
               title: 'Message',
@@ -201,7 +197,7 @@ class AuthenticationService extends GetxController {
 
       isSignInProcessing.value = true;
 
-      AuthApi authApi = authSdk.getAuthApi();
+      AuthApi authApi = ServiceRegistry.authSdk.getAuthApi();
 
       Dio.Response response = await authApi
           .authControllerSigninDonor(
@@ -272,7 +268,7 @@ class AuthenticationService extends GetxController {
 
       isSignUpProcessing.value = true;
 
-      HelpersApi helpersApi = authSdk.getHelpersApi();
+      HelpersApi helpersApi = ServiceRegistry.authSdk.getHelpersApi();
 
       final responses = await Future.wait([
         helpersApi.authHelperControllerCheckEmailAvailability(
@@ -289,12 +285,13 @@ class AuthenticationService extends GetxController {
         AvailabilityCheckResponsePayload emailAvailabilityResponse =
             responses[1].data!;
 
-        if (phoneAvailabilityResponse.isAvailable == false) {
-          customErrorMessageSnackbar(
-            title: 'Message',
-            message: 'Phone number already exists!',
-          );
-        } else if (emailAvailabilityResponse.isAvailable == false) {
+        // if (phoneAvailabilityResponse.isAvailable == false) {
+        //   customErrorMessageSnackbar(
+        //     title: 'Message',
+        //     message: 'Phone number already exists!',
+        //   );
+        // } else
+        if (emailAvailabilityResponse.isAvailable == false) {
           customErrorMessageSnackbar(
             title: 'Message',
             message: 'Email already exists!',
@@ -360,7 +357,7 @@ class AuthenticationService extends GetxController {
       isSignUpProcessing.value = true;
       isResendSignUpOTPSuccessful.value = false;
 
-      AuthApi authApi = authSdk.getAuthApi();
+      AuthApi authApi = ServiceRegistry.authSdk.getAuthApi();
 
       Dio.Response response = await authApi.authControllerSignupDonor(
         createAccountDTO: formData!,
@@ -385,7 +382,7 @@ class AuthenticationService extends GetxController {
             AppRoutes.signUpVerificationRoute,
             parameters: {
               "email": formData.email,
-              "phone": formData.phone,
+              "phone": formData.phone ?? '',
               "lastName": formData.lastName,
               "firstName": formData.firstName,
               "referralCode": formData.referralCode,
@@ -405,7 +402,7 @@ class AuthenticationService extends GetxController {
             AppRoutes.signUpVerificationRoute,
             parameters: {
               "email": formData.email,
-              "phone": formData.phone,
+              "phone": formData.phone ?? '',
               "lastName": formData.lastName,
               "firstName": formData.firstName,
               "referralCode": formData.referralCode,
@@ -459,7 +456,7 @@ class AuthenticationService extends GetxController {
 
       isSignUpProcessing.value = true;
 
-      AuthApi authApi = authSdk.getAuthApi();
+      AuthApi authApi = ServiceRegistry.authSdk.getAuthApi();
 
       Dio.Response response =
           await authApi.authControllerSignupCompleteVerification(
@@ -531,7 +528,7 @@ class AuthenticationService extends GetxController {
 
       isForgotPasswordProcessing.value = true;
 
-      PasswordApi passwordApi = authSdk.getPasswordApi();
+      PasswordApi passwordApi = ServiceRegistry.authSdk.getPasswordApi();
 
       Dio.Response response = await passwordApi.authControllerForgotPassword(
         forgotPasswordDTO: formData,
@@ -598,7 +595,7 @@ class AuthenticationService extends GetxController {
 
       isResetPasswordOtpVerificationProcessing.value = true;
 
-      PasswordApi passwordApi = authSdk.getPasswordApi();
+      PasswordApi passwordApi = ServiceRegistry.authSdk.getPasswordApi();
 
       Dio.Response response =
           await passwordApi.authControllerResetPasswordOtpVerification(
@@ -668,7 +665,7 @@ class AuthenticationService extends GetxController {
 
       isResetPasswordProcessing.value = true;
 
-      PasswordApi passwordApi = authSdk.getPasswordApi();
+      PasswordApi passwordApi = ServiceRegistry.authSdk.getPasswordApi();
 
       Dio.Response response = await passwordApi.authControllerResetPassword(
         resetPasswordDTO: formData,

@@ -33,6 +33,9 @@
 // @dart=3.5
 // @dart=3.5
 // @dart=3.5
+// @dart=3.5
+// @dart=3.5
+// @dart=3.5
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //

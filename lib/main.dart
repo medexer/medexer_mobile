@@ -1,10 +1,10 @@
-import 'dart:io';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:medexer/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:medexer/core/middlewares/core.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:medexer/core/constants/routes.dart';
@@ -13,7 +13,6 @@ import 'package:medexer/data/repositories/index.dart';
 import 'package:medexer/core/themes/theme_provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:medexer/data/repositories/common_repository.dart';
-import 'package:flutter_upgrade_version/flutter_upgrade_version.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,6 +30,10 @@ void main() async {
     ],
   );
 
+  final updateService = AppUpdateService();
+
+  updateService.initialize();
+
   runApp(const MyApp());
 }
 
@@ -43,7 +46,6 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   GetStorage localStorage = GetStorage();
-  PackageInfo _packageInfo = PackageInfo();
   String initialRoute = AppRoutes.rootRoute;
 
   final ThemeProvider themeProvider = Get.put(ThemeProvider());
@@ -52,8 +54,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
-    getPackageData();
-
     rootRepository.initialize();
 
     // setupInitialRoute();
@@ -66,73 +66,10 @@ class _MyAppState extends State<MyApp> {
     super.dispose();
   }
 
-  Future<void> getPackageData() async {
-    if (!mounted) return;
-
-    _packageInfo = await PackageManager.getPackageInfo();
-
-    _checkForUpdate();
-  }
-
   void setupInitialRoute() {
     final hasToken =
         localStorage.read(LocalStorageSecrets.dexerAccessToken) != null;
     initialRoute = hasToken ? AppRoutes.dashboardRoute : AppRoutes.rootRoute;
-  }
-
-  Future<void> _checkForUpdate() async {
-    InAppUpdateManager manager = InAppUpdateManager();
-
-    if (Platform.isAndroid) {
-      AppUpdateInfo? appUpdateInfo = await manager.checkForUpdate();
-
-      if (appUpdateInfo == null) return;
-
-      if (appUpdateInfo.updateAvailability ==
-          UpdateAvailability.developerTriggeredUpdateInProgress) {
-        // If an in-app update is already running, resume the update.
-        String? message = await manager.startAnUpdate(
-          type: AppUpdateType.immediate,
-        );
-
-        debugPrint(message ?? '');
-      } else if (appUpdateInfo.updateAvailability ==
-          UpdateAvailability.updateAvailable) {
-        //Update available
-        if (appUpdateInfo.immediateAllowed) {
-          String? message = await manager.startAnUpdate(
-            type: AppUpdateType.immediate,
-          );
-
-          debugPrint(message ?? '');
-        } else if (appUpdateInfo.flexibleAllowed) {
-          String? message = await manager.startAnUpdate(
-            type: AppUpdateType.flexible,
-          );
-
-          debugPrint(message ?? '');
-        } else {
-          debugPrint(
-              'Update available. Immediate & Flexible Update Flow not allowed');
-        }
-      }
-    } else if (Platform.isIOS) {
-      final currentVersion = _packageInfo.version;
-
-      final VersionInfo versionInfo = await UpgradeVersion.getiOSStoreVersion(
-        packageInfo: _packageInfo,
-      );
-
-      final storeVersion = versionInfo.storeVersion;
-
-      if (storeVersion != currentVersion) {
-        await manager.startAnUpdate(
-          type: AppUpdateType.flexible,
-        );
-      }
-
-      debugPrint(versionInfo.toJson().toString());
-    }
   }
 
   @override

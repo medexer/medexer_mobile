@@ -17,7 +17,7 @@ class _$CreateAccountDTO extends CreateAccountDTO {
   @override
   final String lastName;
   @override
-  final String phone;
+  final String? phone;
   @override
   final String referralCode;
 
@@ -30,7 +30,7 @@ class _$CreateAccountDTO extends CreateAccountDTO {
       required this.password,
       required this.firstName,
       required this.lastName,
-      required this.phone,
+      this.phone,
       required this.referralCode})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(email, r'CreateAccountDTO', 'email');
@@ -40,7 +40,6 @@ class _$CreateAccountDTO extends CreateAccountDTO {
         firstName, r'CreateAccountDTO', 'firstName');
     BuiltValueNullFieldError.checkNotNull(
         lastName, r'CreateAccountDTO', 'lastName');
-    BuiltValueNullFieldError.checkNotNull(phone, r'CreateAccountDTO', 'phone');
     BuiltValueNullFieldError.checkNotNull(
         referralCode, r'CreateAccountDTO', 'referralCode');
   }
@@ -162,8 +161,7 @@ class CreateAccountDTOBuilder
                 firstName, r'CreateAccountDTO', 'firstName'),
             lastName: BuiltValueNullFieldError.checkNotNull(
                 lastName, r'CreateAccountDTO', 'lastName'),
-            phone: BuiltValueNullFieldError.checkNotNull(
-                phone, r'CreateAccountDTO', 'phone'),
+            phone: phone,
             referralCode: BuiltValueNullFieldError.checkNotNull(
                 referralCode, r'CreateAccountDTO', 'referralCode'));
     replace(_$result);

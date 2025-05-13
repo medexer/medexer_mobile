@@ -34,7 +34,7 @@ abstract class UploadDonorComplianceDTO implements Built<UploadDonorComplianceDT
 
   /// Last donated blood date
   @BuiltValueField(wireName: r'lastDonatedBloodDate')
-  DateTime? get lastDonatedBloodDate;
+  String? get lastDonatedBloodDate;
 
   /// Donor identification document url
   @BuiltValueField(wireName: r'identificationDocument')
@@ -90,7 +90,7 @@ class _$UploadDonorComplianceDTOSerializer implements PrimitiveSerializer<Upload
       yield r'lastDonatedBloodDate';
       yield serializers.serialize(
         object.lastDonatedBloodDate,
-        specifiedType: const FullType(DateTime),
+        specifiedType: const FullType(String),
       );
     }
     yield r'identificationDocument';
@@ -153,8 +153,8 @@ class _$UploadDonorComplianceDTOSerializer implements PrimitiveSerializer<Upload
         case r'lastDonatedBloodDate':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
+            specifiedType: const FullType(String),
+          ) as String;
           result.lastDonatedBloodDate = valueDes;
           break;
         case r'identificationDocument':

@@ -130,7 +130,7 @@ class ComplianceIdentificationStep extends StatelessWidget {
                             }
 
                             PlatformFile? platformFile =
-                                await getFileFromDeviceStorage();
+                                await getImageFromDeviceStorage();
 
                             if (platformFile != null) {
                               String uploadedFileUrl = await ServiceRegistry

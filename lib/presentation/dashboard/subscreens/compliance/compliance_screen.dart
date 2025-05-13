@@ -111,7 +111,7 @@ class _ComplianceScreenState extends State<ComplianceScreen> {
           ..bloodGroup = getBloodGroupEnum(bloodGroup)
           ..genotype = getGenotypeEnum(genotype)
           ..hasPreviouslyDonatedBlood = donatedBlood
-          ..lastDonatedBloodDate = lastDonationDate?.toUtc()
+          ..lastDonatedBloodDate = lastDonationDate?.toIso8601String().substring(0, 10)
           ..hasTattoos = hasTattoos
           ..identificationType = getIdentificationTypeEnum(identificationType)
           ..identificationDocument = identificationFileUrl,

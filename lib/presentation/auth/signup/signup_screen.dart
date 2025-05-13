@@ -24,6 +24,7 @@ class SignupScreen extends StatefulWidget {
 
 class _SignupScreenState extends State<SignupScreen> {
   bool hidePassword = true;
+  RxBool isEmailValid = false.obs;
   RxBool isPhoneNumberValid = false.obs;
 
   TextEditingController emailController = TextEditingController();
@@ -53,6 +54,13 @@ class _SignupScreenState extends State<SignupScreen> {
         isPhoneNumberValid.value = false;
       }
     });
+    emailController.addListener(() {
+      if (emailController.text.isEmail) {
+        isEmailValid.value = true;
+      } else {
+        isEmailValid.value = false;
+      }
+    });
   }
 
   @override
@@ -67,22 +75,15 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   void submitHandler() async {
-    if (commonRepository.userCountry.value.dialCode != '+234') {
+    if (firstNameController.text.isEmpty) {
       return customErrorMessageSnackbar(
         title: 'Message',
-        message: 'Invalid country code, only +234(NG) is supported.',
+        message: 'First name is required',
       );
-    } else if (isPhoneNumberValid.isFalse) {
+    } else if (lastNameController.text.isEmpty) {
       return customErrorMessageSnackbar(
         title: 'Message',
-        message: 'Phone number must be at least 10 digits',
-      );
-    } else if (!phoneController.text.isNumericOnly) {
-      return customErrorMessageSnackbar(
-        duration: 5500,
-        title: 'Message',
-        message:
-            'Invalid phone number, ensure that your phone number comprises of digits only!',
+        message: 'Last name is required',
       );
     } else if (emailController.text.isEmpty) {
       return customErrorMessageSnackbar(
@@ -94,22 +95,33 @@ class _SignupScreenState extends State<SignupScreen> {
         title: 'Message',
         message: 'Invalid email address',
       );
-    } else if (firstNameController.text.isEmpty) {
+    } else if (phoneController.text.isNotEmpty &&
+        commonRepository.userCountry.value.dialCode != '+234') {
       return customErrorMessageSnackbar(
         title: 'Message',
-        message: 'First name is required',
+        message: 'Invalid country code, only +234(NG) is supported.',
       );
-    } else if (lastNameController.text.isEmpty) {
+    } else if (phoneController.text.isNotEmpty && isPhoneNumberValid.isFalse) {
       return customErrorMessageSnackbar(
         title: 'Message',
-        message: 'Last name is required',
+        message: 'Phone number must be at least 10 digits',
+      );
+    } else if (phoneController.text.isNotEmpty &&
+        !phoneController.text.isNumericOnly) {
+      return customErrorMessageSnackbar(
+        duration: 5500,
+        title: 'Message',
+        message:
+            'Invalid phone number, ensure that your phone number comprises of digits only!',
       );
     } else {
       Map<String, dynamic> payload = {
-        "phone": formatPhoneNumber(
-          ServiceRegistry.commonRepository.userCountry.value.dialCode!,
-          phoneController.text.trim(),
-        ),
+        "phone": phoneController.text.isNotEmpty
+            ? formatPhoneNumber(
+                ServiceRegistry.commonRepository.userCountry.value.dialCode!,
+                phoneController.text.trim(),
+              )
+            : '',
         "email": emailController.text.trim(),
         "firstName": firstNameController.text.trim(),
         "lastName": lastNameController.text.trim(),
@@ -148,8 +160,6 @@ class _SignupScreenState extends State<SignupScreen> {
                 const SizedBox(height: AppSizes.vertical_5),
                 const AuthRedirectLink(routeType: 'LOGIN'),
                 const SizedBox(height: AppSizes.vertical_20),
-                FormPhoneField(phoneController: phoneController),
-                const SizedBox(height: AppSizes.vertical_10),
                 SizedBox(
                   width: double.maxFinite,
                   child: Row(
@@ -193,10 +203,15 @@ class _SignupScreenState extends State<SignupScreen> {
                   textController: emailController,
                 ),
                 const SizedBox(height: AppSizes.vertical_10),
+                FormPhoneField(
+                  label: 'Phone number(optional)',
+                  phoneController: phoneController,
+                ),
+                const SizedBox(height: AppSizes.vertical_10),
                 FormTextField(
-                  label: 'Referral Code',
+                  label: 'Referral Code(optional)',
                   textController: referralCodeController,
-                  hintText: 'Enter referral code (optional)',
+                  hintText: 'Enter referral code',
                 ),
                 const SizedBox(height: AppSizes.horizontal_30),
                 ServiceRegistry.authenticationService.isSignUpProcessing.isTrue
@@ -210,7 +225,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         onTapHandler: submitHandler,
                         fontWeight: FontWeight.w600,
                         fontColor: AppColors.whiteColor,
-                        backgroundColor: isPhoneNumberValid.isFalse
+                        backgroundColor: isEmailValid.isFalse
                             ? AppColors.buttonPrimaryDisabledColor
                             : AppColors.buttonPrimaryColor,
                       ),

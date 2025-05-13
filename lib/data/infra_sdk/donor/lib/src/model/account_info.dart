@@ -28,7 +28,6 @@ part 'account_info.g.dart';
 /// * [fcmToken] 
 /// * [referralCode] 
 /// * [referredBy] 
-/// * [lastLogin] 
 /// * [lastDonationDate] 
 /// * [inRecovery] 
 /// * [bloodGroup] 
@@ -83,9 +82,6 @@ abstract class AccountInfo implements Built<AccountInfo, AccountInfoBuilder> {
 
   @BuiltValueField(wireName: r'referredBy')
   String get referredBy;
-
-  @BuiltValueField(wireName: r'lastLogin')
-  DateTime get lastLogin;
 
   @BuiltValueField(wireName: r'lastDonationDate')
   String get lastDonationDate;
@@ -204,11 +200,6 @@ class _$AccountInfoSerializer implements PrimitiveSerializer<AccountInfo> {
     yield serializers.serialize(
       object.referredBy,
       specifiedType: const FullType(String),
-    );
-    yield r'lastLogin';
-    yield serializers.serialize(
-      object.lastLogin,
-      specifiedType: const FullType(DateTime),
     );
     yield r'lastDonationDate';
     yield serializers.serialize(
@@ -367,13 +358,6 @@ class _$AccountInfoSerializer implements PrimitiveSerializer<AccountInfo> {
             specifiedType: const FullType(String),
           ) as String;
           result.referredBy = valueDes;
-          break;
-        case r'lastLogin':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(DateTime),
-          ) as DateTime;
-          result.lastLogin = valueDes;
           break;
         case r'lastDonationDate':
           final valueDes = serializers.deserialize(

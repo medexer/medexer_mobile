@@ -23,7 +23,6 @@ Name | Type | Description | Notes
 **fcmToken** | **String** |  | 
 **referralCode** | **String** |  | 
 **referredBy** | **String** |  | 
-**lastLogin** | [**DateTime**](DateTime.md) |  | 
 **lastDonationDate** | **String** |  | 
 **inRecovery** | **bool** |  | 
 **bloodGroup** | **String** |  | 

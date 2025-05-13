@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -13,8 +11,13 @@ import 'package:medexer/components/pickers/phone_country_picker.dart';
 CommonRepository commonRepository = Get.find<CommonRepository>();
 
 class FormPhoneField extends StatelessWidget {
+  final String label;
   final TextEditingController phoneController;
-  const FormPhoneField({super.key, required this.phoneController});
+  const FormPhoneField({
+    super.key,
+    this.label = 'Phone number',
+    required this.phoneController,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +26,7 @@ class FormPhoneField extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           FormLabelText(
-            text: 'Phone number',
+            text: label,
           ),
           const SizedBox(height: AppSizes.vertical_3),
           SizedBox(

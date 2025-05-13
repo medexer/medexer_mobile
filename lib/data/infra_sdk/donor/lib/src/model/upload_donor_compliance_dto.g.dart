@@ -279,7 +279,7 @@ class _$UploadDonorComplianceDTO extends UploadDonorComplianceDTO {
   @override
   final UploadDonorComplianceDTOGenotypeEnum genotype;
   @override
-  final DateTime? lastDonatedBloodDate;
+  final String? lastDonatedBloodDate;
   @override
   final String identificationDocument;
   @override
@@ -381,9 +381,9 @@ class UploadDonorComplianceDTOBuilder
   set genotype(UploadDonorComplianceDTOGenotypeEnum? genotype) =>
       _$this._genotype = genotype;
 
-  DateTime? _lastDonatedBloodDate;
-  DateTime? get lastDonatedBloodDate => _$this._lastDonatedBloodDate;
-  set lastDonatedBloodDate(DateTime? lastDonatedBloodDate) =>
+  String? _lastDonatedBloodDate;
+  String? get lastDonatedBloodDate => _$this._lastDonatedBloodDate;
+  set lastDonatedBloodDate(String? lastDonatedBloodDate) =>
       _$this._lastDonatedBloodDate = lastDonatedBloodDate;
 
   String? _identificationDocument;

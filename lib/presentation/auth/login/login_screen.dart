@@ -168,31 +168,31 @@ class _LoginScreenState extends State<LoginScreen> {
                                 : AppColors.buttonPrimaryColor,
                           ),
                     const SizedBox(height: AppSizes.horizontal_25),
-                    Row(
-                      children: [
-                        const Expanded(
-                          child: Divider(
-                            thickness: 1,
-                            color: AppColors.grayLightColor,
-                          ),
-                        ),
-                        const SizedBox(width: AppSizes.horizontal_5),
-                        CustomTextWidget(
-                          text: 'OR',
-                          color: AppColors.grayColor.withOpacity(0.6),
-                        ),
-                        const SizedBox(width: AppSizes.horizontal_5),
-                        const Expanded(
-                          child: Divider(
-                            thickness: 1,
-                            color: AppColors.grayLightColor,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: AppSizes.horizontal_25),
+                    // Row(
+                    //   children: [
+                    //     const Expanded(
+                    //       child: Divider(
+                    //         thickness: 1,
+                    //         color: AppColors.grayLightColor,
+                    //       ),
+                    //     ),
+                    //     const SizedBox(width: AppSizes.horizontal_5),
+                    //     CustomTextWidget(
+                    //       text: 'OR',
+                    //       color: AppColors.grayColor.withOpacity(0.6),
+                    //     ),
+                    //     const SizedBox(width: AppSizes.horizontal_5),
+                    //     const Expanded(
+                    //       child: Divider(
+                    //         thickness: 1,
+                    //         color: AppColors.grayLightColor,
+                    //       ),
+                    //     ),
+                    //   ],
+                    // ),
+                    // const SizedBox(height: AppSizes.horizontal_25),
                     Visibility(
-                      visible: true,
+                      visible: false,
                       child: CustomIconButton(
                         text: 'Continue with google',
                         width: double.maxFinite,
@@ -209,8 +209,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     Visibility(
-                      // visible: false,
-                      visible: Platform.isIOS,
+                      visible: false,
+                      // visible: Platform.isIOS,
                       child: Column(
                         children: [
                           SizedBox(height: AppSizes.horizontal_10),

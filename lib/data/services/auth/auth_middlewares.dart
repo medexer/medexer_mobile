@@ -58,7 +58,6 @@ void userLogoutHandler({
       ..fcmToken = ''
       ..referralCode = ''
       ..referredBy = ''
-      ..lastLogin = DateTime(2024, 12, 16)
       ..lastDonationDate = ''
       ..inRecovery = false
       ..bloodGroup = AccountInfoBloodGroupEnum.O_

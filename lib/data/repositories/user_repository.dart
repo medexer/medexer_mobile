@@ -24,7 +24,6 @@ class UserRepository extends GetxController {
       ..fcmToken = ''
       ..referralCode = ''
       ..referredBy = ''
-      ..lastLogin = DateTime(2024, 12, 16)
       ..lastDonationDate = ''
       ..inRecovery = false
       ..bloodGroup = AccountSdk.AccountInfoBloodGroupEnum.O_

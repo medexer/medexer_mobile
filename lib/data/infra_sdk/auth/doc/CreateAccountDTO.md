@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **password** | **String** | Password for the donor account. | 
 **firstName** | **String** | First name of the donor. | 
 **lastName** | **String** | Last name of the donor. | 
-**phone** | **String** | Phone number of the donor. | 
+**phone** | **String** | Phone number of the donor. | [optional] 
 **referralCode** | **String** | Referral code of the donor (Optional). | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
