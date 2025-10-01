@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:dio/dio.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -21,13 +22,23 @@ class ServiceRegistry {
   static AuthenticationService authenticationService =
       Get.find<AuthenticationService>();
 
+  static Dio dioBaseOptions = Dio(BaseOptions(
+    baseUrl: dotenv.env['INFRA_BASE_URL']!,
+    sendTimeout: const Duration(milliseconds: 15000),
+    connectTimeout: const Duration(milliseconds: 15000),
+    receiveTimeout: const Duration(milliseconds: 15000),
+  ));
+
   static AccountSdk accountSdk = AccountSdk(
-        // basePathOverride: dotenv.env['INFRA_BASE_URL']!,
-      );
+    dio: dioBaseOptions,
+    // basePathOverride: dotenv.env['INFRA_BASE_URL']!,
+  );
   static AuthSdk authSdk = AuthSdk(
-        // basePathOverride: dotenv.env['INFRA_BASE_URL']!,
-      );
+    dio: dioBaseOptions,
+    // basePathOverride: dotenv.env['INFRA_BASE_URL']!,
+  );
   static DonorSdk donorSdk = DonorSdk(
-        // basePathOverride: dotenv.env['INFRA_BASE_URL']!,
-      );
+    dio: dioBaseOptions,
+    // basePathOverride: dotenv.env['INFRA_BASE_URL']!,
+  );
 }

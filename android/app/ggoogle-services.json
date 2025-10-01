@@ -22,14 +22,6 @@
           }
         },
         {
-          "client_id": "78837080015-buqfaeajm151rofs3p141bugabnq7m82.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "medexer.medexer_donor",
-            "certificate_hash": "20c83bb22ff69de68c3f633b126ef11c95d5b9c8"
-          }
-        },
-        {
           "client_id": "78837080015-net9mq56aim5rctl3t4ok608jjg9e5ke.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
