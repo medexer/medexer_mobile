@@ -1,5 +1,6 @@
 plugins {
     id "com.android.application"
+    // id "com.android.application" version "8.5.1" apply false
     id "kotlin-android"
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id "dev.flutter.flutter-gradle-plugin"
@@ -27,8 +28,10 @@ if (keystorePropertiesFile.exists()) {
 android {
     namespace = "medexer.medexer_donor"
     // compileSdk = flutter.compileSdkVersion
-    compileSdk = 35
-    ndkVersion = flutter.ndkVersion
+    compileSdk = 34
+    buildToolsVersion "34.0.0"
+    // ndkVersion = flutter.ndkVersion
+    ndkVersion "29.0.14033849"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -51,12 +54,23 @@ android {
         versionCode = flutter.versionCode
         versionName = flutter.versionName
 
-        externalNativeBuild {
-            ndk {
-                abiFilters 'arm64-v8a' // 64-bit only
-            }
-        }
+        // externalNativeBuild {
+        //     ndk {
+        //         abiFilters 'arm64-v8a' // 64-bit only
+        //     }
+        // }
     }
+    packagingOptions {
+      jniLibs {
+        useLegacyPackaging true
+      }
+  }
+
+//    externalNativeBuild {
+//         cmake {
+//             path "CMakeLists.txt"
+//         }
+//     }
 
     signingConfigs {
         debug {

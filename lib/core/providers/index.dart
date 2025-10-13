@@ -31,14 +31,14 @@ class ServiceRegistry {
 
   static AccountSdk accountSdk = AccountSdk(
     dio: dioBaseOptions,
-    // basePathOverride: dotenv.env['INFRA_BASE_URL']!,
+    basePathOverride: dotenv.env['INFRA_BASE_URL']!,
   );
   static AuthSdk authSdk = AuthSdk(
     dio: dioBaseOptions,
-    // basePathOverride: dotenv.env['INFRA_BASE_URL']!,
+    basePathOverride: dotenv.env['INFRA_BASE_URL']!,
   );
   static DonorSdk donorSdk = DonorSdk(
     dio: dioBaseOptions,
-    // basePathOverride: dotenv.env['INFRA_BASE_URL']!,
+    basePathOverride: dotenv.env['INFRA_BASE_URL']!,
   );
 }
