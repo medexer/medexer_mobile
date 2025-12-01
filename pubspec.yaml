@@ -3,7 +3,8 @@ description: 'A new Flutter project.'
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 2.0.23+40
+# version: 1.0.2+11
+version: 2.0.24+41
 
 environment:
     sdk: ^3.5.3
@@ -56,13 +57,14 @@ dependencies:
         sdk: flutter
     webview_flutter: ^4.0.5
     built_collection: ^5.1.1
+    package_info_plus: ^8.1.2
+    new_version_plus: ^0.1.1
     auth_sdk:
         path: lib/data/infra_sdk/auth
     account_sdk:
         path: lib/data/infra_sdk/account
     donor_sdk:
         path: lib/data/infra_sdk/donor
-    package_info_plus: ^8.1.2
 
 dev_dependencies:
     flutter_test:

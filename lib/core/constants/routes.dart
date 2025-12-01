@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:medexer/presentation/dashboard/dashboard.dart';
+import 'package:medexer/presentation/public/app_update_screen.dart';
 import 'package:medexer/presentation/public/splash_screen.dart';
 import 'package:medexer/presentation/auth/login/login_screen.dart';
 import 'package:medexer/presentation/public/onboarding_screen.dart';
@@ -38,6 +39,11 @@ class AppRoutes {
   ///
   /// Navigates to splash screen
   static const String rootRoute = '/';
+
+  /// APP_UPDATE_SCREEN_ROUTE
+  ///
+  /// Navigates to app update screen
+  static const String appUpdateRoute = '/APP_UPDATE_SCREEN_ROUTE';
 
   /// ONBOARDING_SCREEN_ROUTE
   ///
@@ -215,6 +221,15 @@ class AppRoutes {
       name: rootRoute,
       page: () => const SplashScreen(),
     ),
+
+
+    // APP UPDATE ROUTE
+    GetPage(
+      name: appUpdateRoute,
+      page: () => const AppUpdateScreen(),
+    ),
+
+    // ONBOARDING ROUTE
     GetPage(
       name: onboardingRoute,
       page: () => const OnboardingScreen(),
