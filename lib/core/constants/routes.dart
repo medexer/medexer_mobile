@@ -222,7 +222,6 @@ class AppRoutes {
       page: () => const SplashScreen(),
     ),
 
-
     // APP UPDATE ROUTE
     GetPage(
       name: appUpdateRoute,
